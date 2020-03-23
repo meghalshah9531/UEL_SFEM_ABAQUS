@@ -37,7 +37,7 @@ C   Declaration of the Variables
       DOUBLE PRECISION, DIMENSION(3,3) :: C_MATRIX
       DOUBLE PRECISION, DIMENSION(3,1) :: STRESS
       DOUBLE PRECISION, DIMENSION(3,1) :: STRAIN
-      DOUBLE PRECISION, DIMENSION(4,4) :: GAUSVALs
+      DOUBLE PRECISION, DIMENSION(4,4) :: GAUSVAL
 C   Initiallization of Variables 
       CALL KZEROs(AMATRX,8,8)
       CALL KZEROs(B_MATRIX,3,8)
@@ -77,7 +77,22 @@ C   Storing Values of Shape functions @ Integration Points
       GAUSVAL(4,2) = 0.0D0
       GAUSVAL(4,3) = 0.0D0
       GAUSVAL(4,4) = 0.5D0
-
+C   Material Properties 
+      E = PROPS(1)
+      ENU = PROPS(2)
+C   Plane Strain Condition
+      C_MATRIX(1,1) = E / (1-NU*NU)
+      C_MATRIX(1,2) = (E*NU)/(1-NU*NU)
+      C_MATRIX(1,3) = 0.0
+      C_MATRIX(2,1) = (E*NU)/(1-NU*NU)
+      C_MATRIX(2,2) = E / (1-NU*NU)
+      C_MATRIX(2,3) = 0.0
+      C_MATRIX(3,1) = 0.0
+      C_MATRIX(3,2) = 0.0
+      C_MATRIX(3,3) = (E*(1-NU))/(1-NU*NU)
+      WRITE(7,*) 'C_MATRIX', C_MATRIX
+C   Strain-Displacement Matrix 
+      
 
 
 
@@ -96,4 +111,18 @@ C   Storing Values of Shape functions @ Integration Points
 
 
         RETURN 
-        END 
+        END
+C   ----------------
+C   Subroutines 
+C   ----------------
+      SUBROUTINE KZEROs(DMAT, IX, IY)
+      INCLUDE 'ABA_PARAM.INC'
+      PARAMETER (ZERO = 0.0D0)
+      DIMENSION DMAT(IX, IY)
+      DO I = 1, IX 
+        DO J = 1, IY
+            DMAT(I,J) = ZERO
+        END DO 
+      END DO 
+      RETURN
+      END
