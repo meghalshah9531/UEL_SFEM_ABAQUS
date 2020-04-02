@@ -99,6 +99,46 @@ C   MATERIAL PROPERTIES
       E = PROPS(1)
       NU = PROPS(2)
       CALL MATERIAL_MATRIX(CMATRIX, E, NU)
+C   STRAIN-DISPLACEMENT MATRIX 
+      CALL STRAIN_D(N1,N2,N3,N4,N5,N6,SHAPE_V,B,BT,AREA_CELL)
+C      WRITE(7,*) 'B',B(1:12,1:2)
+C      WRITE(7,*) 'BT', BT
+C   K-MATRIX CALCULATION 
+      DO I = 1,4
+        DO J = 1,4
+            DO M = 1,2
+                CALL KMAT(BT((2*I-1):2*I,(3*M-2):3*M),CMATRIX,
+     1      B((3*J-2):3*J,(2*M-1):2*M),2,3,3,2,AREA_CELL(M),AKMAT)
+                AMATRX((2*I-1):2*I,(2*J-1):2*J)=AMATRX((2*I-1):2*I,
+     1      (2*J-1):2*J)+AKMAT
+            END DO
+        END DO 
+      END DO
+      WRITE(7,*) 'AMATRIX '
+      WRITE(7,*) AMATRX
+C   Saving SVARS
+      SVARS(1) = AREA_CELL(1)
+      SVARS(2) = AREA_CELL(2)
+C   RESIDUAL VECTOR - RHS 
+      DO I = 1,NDOFEL
+        DO J = 1, NRHS
+            RHS(I,J) = 0.0D0
+        END DO
+      END DO       
+      DO I = 1,NDOFEL
+        DO J = 1,NDOFEL
+            RHS(I,1) = RHS(I,1) - AMATRX(I,J)*U(J)
+        END DO 
+      END DO 
+C   WRITING OUT OUTPUT 
+      WRITE(7,*) JELEM
+      DO I = 1,2
+        WRITE(7,*) 'AREA1',SVARS(1)
+        WRITE(7,*) 'AREA1',SVARS(2)
+      END DO
+      DO I = 1,8
+        WRITE(7,*) 'U', U(I)
+      END DO     
       RETURN 
       END
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -230,6 +270,8 @@ C   AREA_CELL: AREA_CELL OF THE CELL
       Y(4) = S(2)
 C   Area of the cell 
       CALL AREA_QUAD(X,Y,AREA_CELL,L)
+C        WRITE(7,*) '******AREA_CELL*******'
+C        WRITE(7,*) AREA_CELL      
 C   Calculate Normals at Integration Points 
       NORMALS(1,1) = 0.5D0 * (Y(2)-Y(1))/(L(1)/2)
       NORMALS(2,1) = 0.5D0 * (X(2)-X(1))/(L(1)/2)
@@ -239,6 +281,8 @@ C   Calculate Normals at Integration Points
       NORMALS(2,3) = 0.5D0 * (X(4)-X(3))/(L(3)/2)
       NORMALS(1,4) = 0.5D0 * (Y(1)-Y(4))/(L(4)/2)
       NORMALS(2,4) = 0.5D0 * (X(1)-X(4))/(L(4)/2)
+C        WRITE(7,*) '*******NORMALS******'
+C        WRITE(7,*) NORMALS      
 C   COMPONENT OF STRAIN-DISPLACEMENT FOR NODE      
       BIx = (NORMALS(1,1)*INT_PT1*L(1) + NORMALS(1,2)*INT_PT2*L(2) +
      1       NORMALS(1,3)*INT_PT3*L(3) + NORMALS(1,4)*INT_PT4*L(4))
@@ -251,6 +295,13 @@ C   COMPONENT OF STRAIN-DISPLACEMENT FOR NODE
       Bi(2,2) = Bi(2,2) + BIy
       Bi(3,1) = Bi(3,1) + BIy
       Bi(3,2) = Bi(3,2) + BIx
+C        WRITE(7,*) 'AFTER REPLACEMENT'
+C        WRITE(7,*) Bi
+C        WRITE(7,*) 'bi(1,1)',Bi(1,1)
+C        WRITE(7,*) 'BI(1,2)',Bi(1,2)
+C        WRITE(7,*) 'bi(2,1)',Bi(2,1)
+C        WRITE(7,*) 'Bi(2,2)',Bi(2,2)
+C        WRITE(7,*) 'Bi', Bi      
       CALL TRANSPOSE_MATRIX(Bi,BiT,3,2)
       RETURN
       END
