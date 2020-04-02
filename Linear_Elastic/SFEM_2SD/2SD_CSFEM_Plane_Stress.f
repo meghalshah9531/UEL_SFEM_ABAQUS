@@ -254,3 +254,115 @@ C   COMPONENT OF STRAIN-DISPLACEMENT FOR NODE
       CALL TRANSPOSE_MATRIX(Bi,BiT,3,2)
       RETURN
       END
+C --------------------------------------------------------------------
+C   Find Area of the element for Regular and Irregular Meshes 
+      SUBROUTINE AREA_QUAD(X,Y,AREA_CELL,LENGTH)
+      INCLUDE 'ABA_PARAM.INC'
+      REAL(8) X(4),Y(4),AREA_CELL,AREA1,AREA2,LENGTH(4)
+      REAL(8) ANGLE(4), DIA(2)
+C   Length of all edges       
+      LENGTH(1) = SQRT((X(1)-X(2))**2 + (Y(1)-Y(2))**2)
+      LENGTH(2) = SQRT((X(2)-X(3))**2 + (Y(2)-Y(3))**2)
+      LENGTH(3) = SQRT((X(3)-X(4))**2 + (Y(3)-Y(4))**2)
+      LENGTH(4) = SQRT((X(4)-X(1))**2 + (Y(4)-Y(1))**2)
+C   length of Diagonal
+      DIA(1) = SQRT((X(1)-X(3))**2 + (Y(1)-Y(3))**2)
+      DIA(2) = SQRT((X(2)-X(4))**2 + (Y(2)-Y(4))**2)
+C   
+      CALL ANGLE_QUAD(X,Y,ANGLE,LENGTH,DIA)
+      IF (ANGLE(1) >= 3.14 .OR. ANGLE(3) >= 3.14) THEN 
+        AREA1 = 0.5*(X(1)*Y(2)+X(2)*Y(3)+X(3)*Y(1)-
+     1        X(2)*Y(1)-X(3)*Y(2)-X(1)*Y(3))
+        AREA2 = 0.5*(X(1)*Y(3)+X(3)*Y(4)+X(4)*Y(1)-
+     1        X(1)*Y(4)-X(3)*Y(1)-X(4)*Y(3))
+        AREA_CELL = ABS(AREA1) + ABS(AREA2)
+      ELSE IF (ANGLE(2) >= 3.14 .OR. ANGLE(4) >= 3.14) THEN
+        AREA1 = 0.5*(X(1)*Y(2)+X(2)*Y(4)+X(4)*Y(1)-
+     1        X(1)*Y(4)-X(2)*Y(1)-X(4)*Y(2))
+        AREA2 = 0.5*(X(2)*Y(3)+X(3)*Y(4)+X(4)*Y(2)-
+     1        X(2)*Y(4)-X(3)*Y(2)-X(4)*Y(3))
+        AREA_CELL = ABS(AREA1) + ABS(AREA2)
+      ELSE IF (ANGLE(1)<3.14 .AND. ANGLE(2)<3.14 .AND. ANGLE(3)<3.14
+     1          .AND. ANGLE(4)<3.14 .AND. DIA(1)<=DIA(2)) THEN
+        AREA1 = 0.5*(X(1)*Y(2)+X(2)*Y(3)+X(3)*Y(1)-
+     1        X(1)*Y(3)-X(2)*Y(1)-X(3)*Y(2))
+        AREA2 = 0.5*(X(1)*Y(3)+X(3)*Y(4)+X(4)*Y(1)-
+     1        X(1)*Y(4)-X(3)*Y(1)-X(4)*Y(3))
+        AREA_CELL = ABS(AREA1) + ABS(AREA2)                        
+      ELSE IF (ANGLE(1)<3.14 .AND. ANGLE(2)<3.14 .AND. ANGLE(3)<3.14
+     1        .AND. ANGLE(4)<3.14 .AND. DIA(1)>DIA(2)) THEN
+        AREA1 = 0.5*(X(1)*Y(2)+X(2)*Y(4)+X(4)*Y(1)-
+     1        X(1)*Y(4)-X(2)*Y(1)-X(4)*Y(2))
+        AREA2 = 0.5*(X(2)*Y(3)+X(3)*Y(4)+X(4)*Y(2)-
+     1        X(2)*Y(4)-X(3)*Y(2)-X(4)*Y(3))
+        AREA_CELL = ABS(AREA1) + ABS(AREA2)
+      END IF
+      RETURN
+      END 
+C --------------------------------------------------------------------
+C   Transpose Of the Matrix 
+      SUBROUTINE TRANSPOSE_MATRIX(MAT,TRANS_MAT,I,J)
+      INCLUDE 'ABA_PARAM.INC'
+      REAL(8) MAT(I,J), TRANS_MAT(J,I)
+      DO M = 1,I
+        DO N = 1,J
+            TRANS_MAT(N,M) = MAT(M,N)
+        END DO 
+      END DO 
+      RETURN
+      END
+C   ANGLE OF QUAD
+      SUBROUTINE ANGLE_QUAD(X,Y,ANGLE,EDGE,DIA)
+      INCLUDE 'ABA_PARAM.INC'
+      REAL(8) X(4),Y(4),ANGLE(4),EDGE(4),DIA(2)
+      REAL(8) coA1,coA2,coB1,coB2,coC1,coC2,coD1,coD2
+C               
+      coA1=(DIA(1)**2+edge(4)**2-edge(3)**2)/(2*DIA(1)*edge(4))
+      coA2=(DIA(1)**2+edge(1)**2-edge(2)**2)/(2*DIA(1)*edge(1))
+      coB1=(DIA(2)**2+edge(1)**2-edge(4)**2)/(2*DIA(2)*edge(1))
+      coB2=(DIA(2)**2+edge(2)**2-edge(3)**2)/(2*DIA(2)*edge(2))
+      coC1=(DIA(1)**2+edge(2)**2-edge(1)**2)/(2*DIA(1)*edge(2))
+      coC2=(DIA(1)**2+edge(3)**2-edge(4)**2)/(2*DIA(1)*edge(3))
+      coD1=(DIA(2)**2+edge(3)**2-edge(2)**2)/(2*DIA(2)*edge(3))
+      coD2=(DIA(2)**2+edge(4)**2-edge(1)**2)/(2*DIA(2)*edge(4))
+C           
+      ANGLE(1) = acos(coA1)+acos(coA2)        
+      ANGLE(2) = acos(coB1)+acos(coB2)
+      ANGLE(3) = acos(coC1)+acos(coC2)
+      ANGLE(4) = acos(coD1)+acos(coD2)
+      PRINT *, ANGLE
+      RETURN
+      END
+C       --------------------------------------------------------------
+C       ASSEMBLY OF K-MATRIX 
+      SUBROUTINE KMAT(A,B,C,K,L,M,N,AREA,D)
+      INCLUDE 'ABA_PARAM.INC'
+      REAL(8) A(K,L), B(L,M), C(M,N)
+      REAL(8) D(K,N), E(K,M)
+      REAL(8) AREA
+      CALL KASET2(D,K,N)
+      CALL KASET2(E,K,M)
+      CALL MULTIPLY(A,B,E,K,L,M)
+      CALL MULTIPLY(E,C,D,K,M,N)
+      DO I = 1,K
+        DO J = 1,N
+            D(I,J) = D(I,J) * AREA
+        END DO 
+      END DO 
+      RETURN
+      END 
+C       --------------------------------------------------------------
+C       MATRIX-MULTIPLICATION -
+      SUBROUTINE MULTIPLY(A,B,C,L,N,M)
+      INCLUDE 'ABA_PARAM.INC'
+      REAL(8) A(L,N), B(N,M), C(L,M)
+      CALL KASET2(C,L,M)
+      DO I = 1,L
+        DO J = 1,M 
+            DO K = 1,N
+                C(I,J) = C(I,J) + A(I,K)*B(K,J)
+            END DO 
+        END DO 
+      END DO
+      RETURN
+      END           
