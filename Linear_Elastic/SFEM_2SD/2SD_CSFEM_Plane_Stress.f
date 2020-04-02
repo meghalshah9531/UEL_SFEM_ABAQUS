@@ -93,6 +93,10 @@ C   COORDINATES OF THE ADDED POINTS
       N6(1) = (COORDS(1,3)+COORDS(1,4))/2
       N6(2) = (COORDS(2,3)+COORDS(2,4))/2
 C      WRITE(7,*) N5,N6  
+C   VALUES OF SHAPE FUNCTIONs AT INTEGRATION POINTS
+      CALL SHAPE(SHAPE_V)
+C      PRINT *, "SHAPE VALUES AT INTEGRATION POINTS"
+C      PRINT *, SHAPE_V      
       RETURN 
       END
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -110,3 +114,39 @@ C     SUBROUTINE FOR INITIALIZATION OF MATRIX WITH ZEROs
       END DO
       RETURN
       END
+C --------------------------------------------------------------------
+C     FUNCTION TO STORE SHAPE FUNCTIONs VALUES
+      SUBROUTINE K_SHAPE(SHAPE_V)
+      INCLUDE 'ABA_PARAM.INC'
+      DIMENSION SHAPE_V(7,4)
+      SHAPE_V(1,1) = 0.75D0
+      SHAPE_V(1,2) = 0.25D0
+      SHAPE_V(1,3) = 0.0D0
+      SHAPE_V(1,4) = 0.0D0
+      SHAPE_V(2,1) = 0.25D0
+      SHAPE_V(2,2) = 0.25D0
+      SHAPE_V(2,3) = 0.25D0
+      SHAPE_V(2,4) = 0.25D0
+      SHAPE_V(3,1) = 0.0D0
+      SHAPE_V(3,2) = 0.0D0
+      SHAPE_V(3,3) = 0.25D0
+      SHAPE_V(3,4) = 0.75D0
+      SHAPE_V(4,1) = 0.5D0
+      SHAPE_V(4,2) = 0.0D0
+      SHAPE_V(4,3) = 0.0D0
+      SHAPE_V(4,4) = 0.5D0
+      SHAPE_V(5,1) = 0.25D0
+      SHAPE_V(5,2) = 0.75D0
+      SHAPE_V(5,3) = 0.0D0
+      SHAPE_V(5,4) = 0.0D0
+      SHAPE_V(6,1) = 0.0D0
+      SHAPE_V(6,2) = 0.5D0
+      SHAPE_V(6,3) = 0.5D0
+      SHAPE_V(6,4) = 0.0D0
+      SHAPE_V(7,1) = 0.0D0
+      SHAPE_V(7,2) = 0.0D0
+      SHAPE_V(7,3) = 0.75D0
+      SHAPE_V(7,4) = 0.25D0
+      RETURN
+      END
+C --------------------------------------------------------------------
