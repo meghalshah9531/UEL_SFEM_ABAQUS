@@ -94,7 +94,7 @@ C   VALUES OF SHAPE FUNCTIONs AT INTEGRATION POINTS
       CALL SHAPE(SHAPE_V)
 C      PRINT *, "SHAPE VALUES AT INTEGRATION POINTS"
 C      PRINT *, SHAPE_V   
-C   MATERIAL MATRIX FOR PLANE STRESS ANALYSIS 
+C   MATERIAL MATRIX FOR PLANE STRAIN ANALYSIS 
 C   MATERIAL PROPERTIES
       E = PROPS(1)
       NU = PROPS(2)
@@ -133,8 +133,8 @@ C   RESIDUAL VECTOR - RHS
 C   WRITING OUT OUTPUT 
       WRITE(7,*) JELEM
       DO I = 1,2
-        WRITE(7,*) 'SD_area_1',SVARS(1)
-        WRITE(7,*) 'SD_area_1',SVARS(2)
+        WRITE(7,*) 'SD_Area_1',SVARS(1)
+        WRITE(7,*) 'SD_Area_1',SVARS(2)
       END DO
       DO I = 1,8
         WRITE(7,*) 'U', U(I)
@@ -192,20 +192,20 @@ C   Function to store Shape function Values at Integration Points
       RETURN
       END
 C --------------------------------------------------------------------
-C   Material Matrix 
+C   Material Matrix -- plane strain
       SUBROUTINE MATERIAL_MATRIX(CMATRIX,E,NU)
       INCLUDE 'ABA_PARAM.INC'
       DOUBLE PRECISION, DIMENSION(3,3) :: CMATRIX
       REAL(8) E, NU
-      CMATRIX(1,1) = E / (1-NU*NU)
-      CMATRIX(1,2) = (E*NU)/(1-NU*NU)
+      CMATRIX(1,1) = E*(1.0-NU)/((1.0+NU)*(1.0-2*NU))
+      CMATRIX(1,2) = E*NU/((1.0+NU)*(1.0-2*NU))
       CMATRIX(1,3) = 0.0
-      CMATRIX(2,1) = (E*NU)/(1-NU*NU)
-      CMATRIX(2,2) = E / (1-NU*NU)
+      CMATRIX(2,1) = E*NU/((1.0+NU)*(1.0-2*NU))
+      CMATRIX(2,2) = E*(1.0-NU)/((1.0+NU)*(1.0-2*NU))
       CMATRIX(2,3) = 0.0
       CMATRIX(3,1) = 0.0
       CMATRIX(3,2) = 0.0
-      CMATRIX(3,3) = (E*(1-NU))/(1-NU*NU)
+      CMATRIX(3,3) = E*(1.0-2*NU)/(2*(1.0+NU)*(1.0-2*NU))
       RETURN
       END
 C --------------------------------------------------------------------
@@ -295,13 +295,13 @@ C   COMPONENT OF STRAIN-DISPLACEMENT FOR NODE
       Bi(2,2) = Bi(2,2) + BIy
       Bi(3,1) = Bi(3,1) + BIy
       Bi(3,2) = Bi(3,2) + BIx
-C        WRITE(7,*) 'AFTER REPLACEMENT'
-C        WRITE(7,*) Bi
-C        WRITE(7,*) 'bi(1,1)',Bi(1,1)
-C        WRITE(7,*) 'BI(1,2)',Bi(1,2)
-C        WRITE(7,*) 'bi(2,1)',Bi(2,1)
-C        WRITE(7,*) 'Bi(2,2)',Bi(2,2)
-C        WRITE(7,*) 'Bi', Bi      
+C      WRITE(7,*) 'AFTER REPLACEMENT'
+C      WRITE(7,*) Bi
+C      WRITE(7,*) 'bi(1,1)',Bi(1,1)
+C      WRITE(7,*) 'BI(1,2)',Bi(1,2)
+C      WRITE(7,*) 'bi(2,1)',Bi(2,1)
+C      WRITE(7,*) 'Bi(2,2)',Bi(2,2)
+C      WRITE(7,*) 'Bi', Bi      
       CALL TRANSPOSE_MATRIX(Bi,BiT,3,2)
       RETURN
       END
@@ -309,7 +309,7 @@ C --------------------------------------------------------------------
 C   Find Area of the element for Regular and Irregular Meshes 
       SUBROUTINE AREA_QUAD(X,Y,AREA_CELL,LENGTH)
       INCLUDE 'ABA_PARAM.INC'
-      REAL(8) X(4),Y(4),AREA_CELL,SD_area_1,SD_area_2,LENGTH(4)
+      REAL(8) X(4),Y(4),AREA_CELL,SD_Area_1,SD_Area_2,LENGTH(4)
       REAL(8) ANGLE(4), DIA(2)
 C   Length of all edges       
       LENGTH(1) = SQRT((X(1)-X(2))**2 + (Y(1)-Y(2))**2)
@@ -322,31 +322,31 @@ C   length of Diagonal
 C   
       CALL ANGLE_QUAD(X,Y,ANGLE,LENGTH,DIA)
       IF (ANGLE(1) >= 3.14 .OR. ANGLE(3) >= 3.14) THEN 
-        SD_area_1 = 0.5*(X(1)*Y(2)+X(2)*Y(3)+X(3)*Y(1)-
+        SD_Area_1 = 0.5*(X(1)*Y(2)+X(2)*Y(3)+X(3)*Y(1)-
      1        X(2)*Y(1)-X(3)*Y(2)-X(1)*Y(3))
-        SD_area_2 = 0.5*(X(1)*Y(3)+X(3)*Y(4)+X(4)*Y(1)-
+        SD_Area_2 = 0.5*(X(1)*Y(3)+X(3)*Y(4)+X(4)*Y(1)-
      1        X(1)*Y(4)-X(3)*Y(1)-X(4)*Y(3))
-        AREA_CELL = ABS(SD_area_1) + ABS(SD_area_2)
+        AREA_CELL = ABS(SD_Area_1) + ABS(SD_Area_2)
       ELSE IF (ANGLE(2) >= 3.14 .OR. ANGLE(4) >= 3.14) THEN
-        SD_area_1 = 0.5*(X(1)*Y(2)+X(2)*Y(4)+X(4)*Y(1)-
+        SD_Area_1 = 0.5*(X(1)*Y(2)+X(2)*Y(4)+X(4)*Y(1)-
      1        X(1)*Y(4)-X(2)*Y(1)-X(4)*Y(2))
-        SD_area_2 = 0.5*(X(2)*Y(3)+X(3)*Y(4)+X(4)*Y(2)-
+        SD_Area_2 = 0.5*(X(2)*Y(3)+X(3)*Y(4)+X(4)*Y(2)-
      1        X(2)*Y(4)-X(3)*Y(2)-X(4)*Y(3))
-        AREA_CELL = ABS(SD_area_1) + ABS(SD_area_2)
+        AREA_CELL = ABS(SD_Area_1) + ABS(SD_Area_2)
       ELSE IF (ANGLE(1)<3.14 .AND. ANGLE(2)<3.14 .AND. ANGLE(3)<3.14
      1          .AND. ANGLE(4)<3.14 .AND. DIA(1)<=DIA(2)) THEN
-        SD_area_1 = 0.5*(X(1)*Y(2)+X(2)*Y(3)+X(3)*Y(1)-
+        SD_Area_1 = 0.5*(X(1)*Y(2)+X(2)*Y(3)+X(3)*Y(1)-
      1        X(1)*Y(3)-X(2)*Y(1)-X(3)*Y(2))
-        SD_area_2 = 0.5*(X(1)*Y(3)+X(3)*Y(4)+X(4)*Y(1)-
+        SD_Area_2 = 0.5*(X(1)*Y(3)+X(3)*Y(4)+X(4)*Y(1)-
      1        X(1)*Y(4)-X(3)*Y(1)-X(4)*Y(3))
-        AREA_CELL = ABS(SD_area_1) + ABS(SD_area_2)                        
+        AREA_CELL = ABS(SD_Area_1) + ABS(SD_Area_2)                        
       ELSE IF (ANGLE(1)<3.14 .AND. ANGLE(2)<3.14 .AND. ANGLE(3)<3.14
      1        .AND. ANGLE(4)<3.14 .AND. DIA(1)>DIA(2)) THEN
-        SD_area_1 = 0.5*(X(1)*Y(2)+X(2)*Y(4)+X(4)*Y(1)-
+        SD_Area_1 = 0.5*(X(1)*Y(2)+X(2)*Y(4)+X(4)*Y(1)-
      1        X(1)*Y(4)-X(2)*Y(1)-X(4)*Y(2))
-        SD_area_2 = 0.5*(X(2)*Y(3)+X(3)*Y(4)+X(4)*Y(2)-
+        SD_Area_2 = 0.5*(X(2)*Y(3)+X(3)*Y(4)+X(4)*Y(2)-
      1        X(2)*Y(4)-X(3)*Y(2)-X(4)*Y(3))
-        AREA_CELL = ABS(SD_area_1) + ABS(SD_area_2)
+        AREA_CELL = ABS(SD_Area_1) + ABS(SD_Area_2)
       END IF
       RETURN
       END 
