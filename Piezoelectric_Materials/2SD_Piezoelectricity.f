@@ -106,7 +106,21 @@ C   MATERIAL PROPERTIES
         e15 = PROPS(7)
         g11 = PROPS(8)
         g33 = PROPS(9)
-C                             
+C   ELASTIC STIFFNESS MATRIX
+        CALL ELASTIC_MATRIX(CMATRIX,c11,c13,c33,c55)
+C   PIEZOELECTRIC MATRIX
+        CALL PIEZOELECTRIC_MATRIX(eMATRIX,e31,e33,e15)
+c      WRITE(7,*) 'eMATRIX', eMATRIX
+        CALL TRANSPOSE_MATRIX(eMATRIX,eTMATRIX,2,3)
+C   DIELECTRIC CONSTANT MATRIX 
+        CALL DIELECTRIC_MATRIX(gMATRIX,g11,g33)
+c      WRITE(7,*) 'gMATRIX', gMATRIX
+        CALL TRANSPOSE_MATRIX(gMATRIX,gTMATRIX,2,2)
+C   STRAIN-DISPLACEMENT MATRICES 
+        CALL STRAIN_MECH(N1,N2,N3,N4,N5,N6,SHAPE_V,B_u,B_uT,AREA_CELL)
+C   STRIAN-ELECTRICAL POTENTIAL MATRICES 
+        CALL STRAIN_ELE(N1,N2,N3,N4,N5,N6,SHAPE_V,Bphi,BphiT,
+     1   AREA_CELL)
         RETURN 
         END SUBROUTINE UEL 
 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
@@ -122,5 +136,82 @@ C   Initialization of Matrix with Zeros
                 DMATRIX(I,J) = ZERO
             END DO
         END DO
+        RETURN
+        END
+C --------------------------------------------------------------------
+C   Function to store Shape Function Values at Integration points 
+        SUBROUTINE K_SHAPE(SHAPE_V)
+        INCLUDE 'ABA_PARAM.INC'
+        DIMENSION SHAPE_V(7,4)
+        SHAPE_V(1,1) = 0.75D0
+        SHAPE_V(1,2) = 0.25D0
+        SHAPE_V(1,3) = 0.0D0
+        SHAPE_V(1,4) = 0.0D0
+        SHAPE_V(2,1) = 0.25D0
+        SHAPE_V(2,2) = 0.25D0
+        SHAPE_V(2,3) = 0.25D0
+        SHAPE_V(2,4) = 0.25D0
+        SHAPE_V(3,1) = 0.0D0
+        SHAPE_V(3,2) = 0.0D0
+        SHAPE_V(3,3) = 0.25D0
+        SHAPE_V(3,4) = 0.75D0
+        SHAPE_V(4,1) = 0.5D0
+        SHAPE_V(4,2) = 0.0D0
+        SHAPE_V(4,3) = 0.0D0
+        SHAPE_V(4,4) = 0.5D0
+        SHAPE_V(5,1) = 0.25D0
+        SHAPE_V(5,2) = 0.75D0
+        SHAPE_V(5,3) = 0.0D0
+        SHAPE_V(5,4) = 0.0D0
+        SHAPE_V(6,1) = 0.0D0
+        SHAPE_V(6,2) = 0.5D0
+        SHAPE_V(6,3) = 0.5D0
+        SHAPE_V(6,4) = 0.0D0
+        SHAPE_V(7,1) = 0.0D0
+        SHAPE_V(7,2) = 0.0D0
+        SHAPE_V(7,3) = 0.75D0
+        SHAPE_V(7,4) = 0.25D0
+        RETURN
+        END
+C --------------------------------------------------------------------
+C   Material Matrix 
+        SUBROUTINE ELASTIC_MATRIX(CMATRIX,c11,c13,c33,c55)
+        INCLUDE 'ABA_PARAM.INC'
+        DOUBLE PRECISION, DIMENSION(3,3) :: CMATRIX
+        REAL(8) c11,c13,c33,c55
+        CMATRIX(1,1) = c11
+        CMATRIX(1,2) = c13
+        CMATRIX(1,3) = 0.0
+        CMATRIX(2,1) = c13
+        CMATRIX(2,2) = c33
+        CMATRIX(2,3) = 0.0
+        CMATRIX(3,1) = 0.0
+        CMATRIX(3,2) = 0.0
+        CMATRIX(3,3) = c55
+        RETURN
+        END
+C --------------------------------------------------------------------
+C   Transpose Of the Matrix 
+        SUBROUTINE TRANSPOSE_MATRIX(MAT,TRANS_MAT,I,J)
+        INCLUDE 'ABA_PARAM.INC'
+        REAL(8) MAT(I,J), TRANS_MAT(J,I)
+        INTEGER I,J,M,N
+        DO M = 1,I
+            DO N = 1,J
+                TRANS_MAT(N,M) = MAT(M,N)
+            END DO 
+        END DO 
+        RETURN
+        END
+C --------------------------------------------------------------------
+C   Dielectric Constant Matrix 
+        SUBROUTINE DIELECTRIC_MATRIX(gMATRIX,g11,g33)
+        INCLUDE 'ABA_PARAM.INC'
+        REAL(8) g11,g33
+        DOUBLE PRECISION, DIMENSION(2,2) :: gMATRIX
+        gMATRIX(1,1) = g11
+        gMATRIX(1,2) = 0.0
+        gMATRIX(2,1) = 0.0
+        gMATRIX(2,2) = g33
         RETURN
         END        
