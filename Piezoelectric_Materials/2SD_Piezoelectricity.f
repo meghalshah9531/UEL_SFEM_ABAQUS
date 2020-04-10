@@ -214,4 +214,177 @@ C   Dielectric Constant Matrix
         gMATRIX(2,1) = 0.0
         gMATRIX(2,2) = g33
         RETURN
-        END        
+        END
+C --------------------------------------------------------------------
+C   Strain-Displacement Matrix Calculation
+        SUBROUTINE STRAIN_MECH(N1,N2,N3,N4,N5,N6,SHAPE_V,B,BT,AREA_CELL)
+        INCLUDE 'ABA_PARAM.INC'
+        DOUBLE PRECISION, DIMENSION(2) :: N1
+        DOUBLE PRECISION, DIMENSION(2) :: N2
+        DOUBLE PRECISION, DIMENSION(2) :: N3
+        DOUBLE PRECISION, DIMENSION(2) :: N4
+        DOUBLE PRECISION, DIMENSION(2) :: N5
+        DOUBLE PRECISION, DIMENSION(2) :: N6
+        DOUBLE PRECISION, DIMENSION(2) :: AREA_CELL
+        DOUBLE PRECISION, DIMENSION(7,4) :: SHAPE_V
+        DOUBLE PRECISION, DIMENSION(6,8) :: B_u
+        DOUBLE PRECISION, DIMENSION(8,6) :: B_uT
+C   @ NODE 1
+C             
+        CALL B_ui(N1,N5,N6,N4,SHAPE_V(1,1),SHAPE_V(2,1),
+     1  SHAPE_V(3,1),SHAPE_V(4,1),B_u(1:3,1:2),B_uT(1:2,1:3),
+     2  AREA_CELL(1))
+        CALL B_ui(N5,N2,N3,N6,SHAPE_V(5,1),SHAPE_V(6,1),
+     1  SHAPE_V(7,1),SHAPE_V(2,1),B_u(4:6,1:2),B_uT(1:2,4:6),
+     2  AREA_CELL(2))
+C   @ NODE 2
+        CALL B_ui(N1,N5,N6,N4,SHAPE_V(1,2),SHAPE_V(2,2),
+     1  SHAPE_V(3,2),SHAPE_V(4,2),B_u(1:3,3:4),B_uT(3:4,1:3),
+     2  AREA_CELL(1))
+        CALL B_ui(N5,N2,N3,N6,SHAPE_V(5,2),SHAPE_V(6,2),
+     1  SHAPE_V(7,2),SHAPE_V(2,2),B_u(4:6,3:4),B_uT(3:4,4:6),
+     2  AREA_CELL(2))
+C   @ NODE 3
+        CALL B_ui(N1,N5,N6,N4,SHAPE_V(1,3),SHAPE_V(2,3),
+     1  SHAPE_V(3,3),SHAPE_V(4,3),B_u(1:3,5:6),B_uT(5:6,1:3),
+     2  AREA_CELL(1))
+        CALL B_ui(N5,N2,N3,N6,SHAPE_V(5,3),SHAPE_V(6,3),
+     1  SHAPE_V(7,3),SHAPE_V(2,3),B_u(4:6,5:6),B_uT(5:6,4:6),
+     2  AREA_CELL(2))
+C   NODE 4
+        CALL B_ui(N1,N5,N6,N4,SHAPE_V(1,4),SHAPE_V(2,4),
+     1  SHAPE_V(3,4),SHAPE_V(4,4),B_u(1:3,7:8),B_uT(7:8,1:3),
+     2  AREA_CELL(1))
+        CALL B_ui(N5,N2,N3,N6,SHAPE_V(5,4),SHAPE_V(6,4),
+     1  SHAPE_V(7,4),SHAPE_V(2,4),B_u(4:6,7:8),B_uT(7:8,4:6),
+     2  AREA_CELL(2))
+        RETURN
+        END
+C --------------------------------------------------------------------
+C   STRAIN-DISPLACEMENT COMPONENT FOR EACH NODE
+        SUBROUTINE B_ui(P,Q,R,S,INT_PT1,INT_PT2,INT_PT3,INT_PT4,
+     1   Bi,BiT,AREA_CELL)
+        INCLUDE 'ABA_PARAM.INC'
+        REAL(8) INT_PT1,INT_PT2,INT_PT3,INT_PT4,AREA_CELL
+        REAL(8) X(4),Y(4),L(4)
+        REAL(8) NORMALS(2,4),Bi(3,2),BiT(2,3)
+        REAL(8) P(2),Q(2),R(2),S(2)
+        REAL(8) BIx,BIy
+C   L: LENGTH OF FOUR BOUNDARIES 
+C   X(4),Y(4): X & Y COORDINATES OF FOUR NODES 
+C   NORMALS(4): OUTWARD NORMALS AT INTEGRATION PTs
+C   INT_PT: INTEGRATION POINTs
+C   AREA_CELL: AREA_CELL OF THE CELL
+        X(1) = P(1)
+        Y(1) = P(2)
+        X(2) = Q(1)
+        Y(2) = Q(2)
+        X(3) = R(1)
+        Y(3) = R(2)
+        X(4) = S(1)
+        Y(4) = S(2)
+C   Area of the cell 
+        CALL AREA_QUAD(X,Y,AREA_CELL,L)
+C        WRITE(7,*) '******AREA_CELL*******'
+C        WRITE(7,*) AREA_CELL
+C   Calculate Normals at Integration Points 
+        NORMALS(1,1) = 0.5D0 * (Y(2)-Y(1))/(L(1)/2)
+        NORMALS(2,1) = 0.5D0 * (X(2)-X(1))/(L(1)/2)
+        NORMALS(1,2) = 0.5D0 * (Y(3)-Y(2))/(L(2)/2)
+        NORMALS(2,2) = 0.5D0 * (X(3)-X(2))/(L(2)/2)
+        NORMALS(1,3) = 0.5D0 * (Y(4)-Y(3))/(L(3)/2)
+        NORMALS(2,3) = 0.5D0 * (X(4)-X(3))/(L(3)/2)
+        NORMALS(1,4) = 0.5D0 * (Y(1)-Y(4))/(L(4)/2)
+        NORMALS(2,4) = 0.5D0 * (X(1)-X(4))/(L(4)/2)
+C        WRITE(7,*) '*******NORMALS******'
+C        WRITE(7,*) NORMALS      
+C   COMPONENT OF STRAIN-DISPLACEMENT FOR NODE      
+        BIx = (NORMALS(1,1)*INT_PT1*L(1) + NORMALS(1,2)*INT_PT2*L(2) +
+     1   NORMALS(1,3)*INT_PT3*L(3) + NORMALS(1,4)*INT_PT4*L(4))
+        BIx = BIx / AREA_CELL
+        BIy = (NORMALS(2,1)*INT_PT1*L(1) + NORMALS(2,2)*INT_PT2*L(2) +
+     1       NORMALS(2,3)*INT_PT3*L(3) + NORMALS(2,4)*INT_PT4*L(4))
+        BIy = BIy / AREA_CELL
+        CALL KASET2(Bi,3,2)
+        Bi(1,1) = Bi(1,1) + BIx
+        Bi(2,2) = Bi(2,2) + BIy
+        Bi(3,1) = Bi(3,1) + BIy
+        Bi(3,2) = Bi(3,2) + BIx
+C        WRITE(7,*) 'AFTER REPLACEMENT'
+C        WRITE(7,*) Bi
+C        WRITE(7,*) 'bi(1,1)',Bi(1,1)
+C        WRITE(7,*) 'BI(1,2)',Bi(1,2)
+C        WRITE(7,*) 'bi(2,1)',Bi(2,1)
+C        WRITE(7,*) 'Bi(2,2)',Bi(2,2)
+C        WRITE(7,*) 'Bi', Bi      
+        CALL TRANSPOSE_MATRIX(Bi,BiT,3,2)
+        RETURN
+        END
+C --------------------------------------------------------------------
+C   Find Area of the element for Regular and Irregular Meshes 
+         SUBROUTINE AREA_QUAD(X,Y,AREA_CELL,LENGTH)
+        INCLUDE 'ABA_PARAM.INC'
+        REAL(8) X(4),Y(4),AREA_CELL,AREA1,AREA2,LENGTH(4)
+        REAL(8) ANGLE(4), DIA(2)
+C   Length of all edges       
+        LENGTH(1) = SQRT((X(1)-X(2))**2 + (Y(1)-Y(2))**2)
+        LENGTH(2) = SQRT((X(2)-X(3))**2 + (Y(2)-Y(3))**2)
+        LENGTH(3) = SQRT((X(3)-X(4))**2 + (Y(3)-Y(4))**2)
+        LENGTH(4) = SQRT((X(4)-X(1))**2 + (Y(4)-Y(1))**2)
+C   length of Diagonal
+        DIA(1) = SQRT((X(1)-X(3))**2 + (Y(1)-Y(3))**2)
+        DIA(2) = SQRT((X(2)-X(4))**2 + (Y(2)-Y(4))**2)
+C   
+        CALL ANGLE_QUAD(X,Y,ANGLE,LENGTH,DIA)
+        IF (ANGLE(1) >= 3.14 .OR. ANGLE(3) >= 3.14) THEN 
+        AREA1 = 0.5*(X(1)*Y(2)+X(2)*Y(3)+X(3)*Y(1)-
+     1        X(2)*Y(1)-X(3)*Y(2)-X(1)*Y(3))
+        AREA2 = 0.5*(X(1)*Y(3)+X(3)*Y(4)+X(4)*Y(1)-
+     1        X(1)*Y(4)-X(3)*Y(1)-X(4)*Y(3))
+        AREA_CELL = ABS(AREA1) + ABS(AREA2)
+        ELSE IF (ANGLE(2) >= 3.14 .OR. ANGLE(4) >= 3.14) THEN
+        AREA1 = 0.5*(X(1)*Y(2)+X(2)*Y(4)+X(4)*Y(1)-
+     1        X(1)*Y(4)-X(2)*Y(1)-X(4)*Y(2))
+        AREA2 = 0.5*(X(2)*Y(3)+X(3)*Y(4)+X(4)*Y(2)-
+     1        X(2)*Y(4)-X(3)*Y(2)-X(4)*Y(3))
+        AREA_CELL = ABS(AREA1) + ABS(AREA2)
+        ELSE IF (ANGLE(1)<3.14 .AND. ANGLE(2)<3.14 .AND. ANGLE(3)<3.14
+     1          .AND. ANGLE(4)<3.14 .AND. DIA(1)<=DIA(2)) THEN
+        AREA1 = 0.5*(X(1)*Y(2)+X(2)*Y(3)+X(3)*Y(1)-
+     1        X(1)*Y(3)-X(2)*Y(1)-X(3)*Y(2))
+        AREA2 = 0.5*(X(1)*Y(3)+X(3)*Y(4)+X(4)*Y(1)-
+     1        X(1)*Y(4)-X(3)*Y(1)-X(4)*Y(3))
+        AREA_CELL = ABS(AREA1) + ABS(AREA2)                        
+        ELSE IF (ANGLE(1)<3.14 .AND. ANGLE(2)<3.14 .AND. ANGLE(3)<3.14
+     1        .AND. ANGLE(4)<3.14 .AND. DIA(1)>DIA(2)) THEN
+        AREA1 = 0.5*(X(1)*Y(2)+X(2)*Y(4)+X(4)*Y(1)-
+     1        X(1)*Y(4)-X(2)*Y(1)-X(4)*Y(2))
+        AREA2 = 0.5*(X(2)*Y(3)+X(3)*Y(4)+X(4)*Y(2)-
+     1        X(2)*Y(4)-X(3)*Y(2)-X(4)*Y(3))
+        AREA_CELL = ABS(AREA1) + ABS(AREA2)
+        END IF
+        RETURN
+        END
+C --------------------------------------------------------------------
+C   ANGLE OF QUAD
+        SUBROUTINE ANGLE_QUAD(X,Y,ANGLE,EDGE,DIA)
+        INCLUDE 'ABA_PARAM.INC'
+        REAL(8) X(4),Y(4),ANGLE(4),EDGE(4),DIA(2)
+        REAL(8) ADJ_A1,ADJ_A2,ADJ_B1,ADJ_B2,ADJ_C1,ADJ_C2,ADJ_D1,ADJ_D2
+C               
+        ADJ_A1=(DIA(1)**2+edge(4)**2-edge(3)**2)/(2*DIA(1)*edge(4))
+        ADJ_A2=(DIA(1)**2+edge(1)**2-edge(2)**2)/(2*DIA(1)*edge(1))
+        ADJ_B1=(DIA(2)**2+edge(1)**2-edge(4)**2)/(2*DIA(2)*edge(1))
+        ADJ_B2=(DIA(2)**2+edge(2)**2-edge(3)**2)/(2*DIA(2)*edge(2))
+        ADJ_C1=(DIA(1)**2+edge(2)**2-edge(1)**2)/(2*DIA(1)*edge(2))
+        ADJ_C2=(DIA(1)**2+edge(3)**2-edge(4)**2)/(2*DIA(1)*edge(3))
+        ADJ_D1=(DIA(2)**2+edge(3)**2-edge(2)**2)/(2*DIA(2)*edge(3))
+        ADJ_D2=(DIA(2)**2+edge(4)**2-edge(1)**2)/(2*DIA(2)*edge(4))
+C           
+        ANGLE(1) = acos(ADJ_A1)+acos(ADJ_A2)        
+        ANGLE(2) = acos(ADJ_B1)+acos(ADJ_B2)
+        ANGLE(3) = acos(ADJ_C1)+acos(ADJ_C2)
+        ANGLE(4) = acos(ADJ_D1)+acos(ADJ_D2)
+C        PRINT *, ANGLE
+        RETURN
+        END                   
