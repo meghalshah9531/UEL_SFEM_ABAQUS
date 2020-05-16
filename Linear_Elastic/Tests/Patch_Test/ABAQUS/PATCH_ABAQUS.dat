@@ -1,0 +1,724 @@
+1
+
+   Abaqus 3DEXPERIENCE R2018x                                  Date 05-May-2020   Time 19:39:39
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine DESKTOP-NVH18H4 
+                          you are authorized to run
+                          Abaqus/Standard until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.3ds.com/products/simulia/locations/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *               Abaqus 3DEXPERIENCE R2018x                * 
+                *                                                         * 
+                *          BUILD ID: 2017_11_07-22.51.41 127140           * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release 3DEXPERIENCE R2018x manuals                    * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+1
+
+   Abaqus 3DEXPERIENCE R2018x                                  Date 05-May-2020   Time 19:39:39
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+                                                                                     
+
+                                             A B A Q U S   I N P U T   E C H O
+
+
+                    *HEADING
+                    PATCH TEST FOR PLANE STRAIN ELEMENT     
+                    *PREPRINT,ECHO=YES,HISTORY=NO,MODEL=NO  
+                    *NODE   
+     LINE     5     10,0,0  
+                    20,.24,0.       
+                    30,.24,.12      
+                    40,0.,.12       
+                    50,.12,0.       
+     LINE    10     60,.24,.06      
+                    70,.12,.12      
+                    80,.0,.06       
+                    102,.04,.02     
+                    104,.18,.03     
+     LINE    15     204,.16,.08     
+                    202,.08,.08     
+                    *NGEN   
+                    102,104 
+                    202,204 
+     LINE    20     102,202,50      
+                    104,204,50      
+                    10,102,46       
+                    40,202,81       
+                    30,204,87       
+     LINE    25     20,104,42       
+                    *ELEMENT, TYPE=CPE4, ELSET=EALL 
+                    1,10,20,104,102 
+                    2,10,102,202,40 
+                    3,102,104,204,202       
+     LINE    30     4,104,20,30,204 
+                    5,202,204,30,40 
+                    *ELSET,ELSET=EL3
+                    3,      
+                    *SOLID SECTION,MATERIAL=A1, ELSET=EALL  
+     LINE    35     .001,   
+                    *MATERIAL,NAME=A1       
+                    *ELASTIC,TYPE=ISOTROPIC 
+                    1.E6,.25
+                    *NSET,NSET=SIDES,GENERATE       
+     LINE    40     10,80,10
+                    *STEP   
+                    *STATIC 
+                    1.,1., , 1.     
+                    *BOUNDARY       
+     LINE    45     10,1,2  
+                    20,1,,.24E-3    
+                    20,2,,.12E-3    
+                    30,1,,.3E-3     
+                    30,2,,.24E-3    
+     LINE    50     40,1,,.06E-3    
+                    40,2,,.12E-3    
+                    *ENERGY PRINT   
+                    COORD   
+                    *NODE FILE      
+     LINE    55      U,RF,CF,COORD  
+                    *OUTPUT,FIELD   
+                    *NODE OUTPUT    
+                    U,RF,CF,COORD   
+                    *ENERGY FILE    
+     LINE    60     *OUTPUT,HISTORY,FREQUENCY=1     
+                    *ENERGY OUTPUT,VARIABLE=PRESELECT       
+                    *ENERGY PRINT   
+                    *NODE PRINT     
+                     U, RF  
+     LINE    65     *EL PRINT       
+                     SDV    
+                    *EL PRINT       
+                     S,     
+                     E,     
+     LINE    70     *EL PRINT,POSITION=NODES
+                     S,     
+                     E,     
+                    *EL PRINT,POSITION=AVERAGED AT NODES    
+                     S,     
+     LINE    75      E,     
+                    *EL PRINT,POSITION=CENTROID     
+                     S,     
+                     E,     
+                    *EL FILE
+     LINE    80      S,     
+                     E,     
+                    *OUTPUT,FIELD   
+                    *ELEMENT OUTPUT 
+                    S,      
+     LINE    85     E,      
+                    *EL FILE,POSITION=NODES 
+                     S,     
+                     E,     
+                    *EL FILE,POSITION=AVERAGED AT NODES     
+     LINE    90      S,     
+                     E,     
+                    *EL FILE,POSITION=CENTROID      
+                     S,     
+                     E,     
+     LINE    95     *END STEP       
+                    --------------------------------------------------------------------------------
+                        5   10   15   20   25   30   35   40   45   50   55   60   65   70   75   80
+                    --------------------------------------------------------------------------------
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *HEADING
+          PATCH TEST FOR PLANE STRAIN ELEMENT                                                                                                                                                                                                                             
+  *NODE
+  *NGEN
+  *ELEMENT, TYPE=CPE4, ELSET=EALL
+  *ELSET,ELSET=EL3
+  *NSET,NSET=SIDES,GENERATE
+  *MATERIAL,NAME=A1
+  *ELASTIC,TYPE=ISOTROPIC
+  *SOLID SECTION,MATERIAL=A1, ELSET=EALL
+  *SOLID SECTION,MATERIAL=A1, ELSET=EALL
+
+ ***WARNING: FOR TWO-DIMENSIONAL MODELS, IF A NON-UNITY THICKNESS IS SPECIFIED 
+             FOR TWO-DIMENSIONAL SOLID ELEMENTS AND THESE ELEMENTS ARE INVOLVED 
+             IN AN INTERACTION SUCH AS CONTACT, THE SAME THICKNESS SHOULD BE 
+             SPECIFIED FOR THE OUT-OF-PLANE THICKNESS OF THE CORRESPONDING 
+             SURFACE UNDER *SURFACE INTERACTION.
+  *BOUNDARY
+  *BOUNDARY
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *ELEMENT OUTPUT
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *ELEMENT OUTPUT
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *ELEMENT OUTPUT
+  
+                               E L E M E N T   Q U A L I T Y  C H E C K S        
+  
+  
+ ***NOTES: DISTORTED ISOPARAMETRIC ELEMENTS: ANGLE BETWEEN ISOPARAMETRIC LINES 
+           IS LESS THAN 45 DEGREES OR GREATER THAN 135 DEGREES.
+  
+           TETRAHEDRAL QUALITY MEASURE: VOLUME OF TETRAHEDRON DIVIDED BY THE 
+           VOLUME OF EQUILATERAL TETRAHEDRON WITH SAME CIRCUMSPHERE RADIUS; 
+           0 FOR DEGENERATE TETRAHEDRON AND 1 FOR EQUILATERIAL TETRAHEDRON. IT 
+           IS RECOMMENDED THAT THE TETRAHEDRAL QUALITY MEASURE BE GREATER THAN 
+           0.02, THE MIN INTERIOR (DIHEDRAL) ANGLE BE GREATER THAN 10 DEGREES, 
+           AND THE MAX INTERIOR (DIHEDRAL) ANGLE BE LESS THAN 160 DEGREES. 
+  
+           MODIFIED TETRAHEDRAL QUALITY MEASURE: ANGLES BETWEEN THE TWO LINE 
+           SEGMENTS ON EACH EDGE; THE EDGES OF MODIFIED TETRAHEDRAL SHOULD BE 
+           AS STRAIGHT AS POSSIBLE. IT IS RECOMMENDED THAT THE ANGLE BETWEEN 
+           THE TWO LINE SEGMENTS ON EACH EDGE IS BETWEEN 160 AND 180 DEGREES. 
+  
+           TRIANGULAR QUALITY MEASURE: AREA OF TRIANGLE DIVIDED BY THE AREA OF 
+           EQUILATERAL TRIANGLE WITH SAME CIRCUMCIRCLE RADIUS; 0 FOR DEGENERATE 
+           TRIANGLE AND 1 FOR EQUILATERAL TRIANGLE. IT IS RECOMMENDED THAT THE
+           TRIANGULAR QUALITY MEASURE BE GREATER THAN 0.01, THE MIN INTERIOR 
+           ANGLE BE GREATER THAN 10 DEGREES, AND THE MAX INTERIOR ANGLE BE LESS 
+           THAN 160 DEGREES. 
+  
+           NODAL ADJUSTMENTS ARISING FROM CONTACT INTERACTIONS AND/OR TIE 
+           CONSTRAINTS CAN CAUSE SEVERE ELEMENT DISTORTION. IT MAY BE NECESSARY 
+           TO REMESH IN ORDER TO REDUCE THE AMOUNT OF ADJUSTMENT. 
+
+ ***WARNING: 2 elements are distorted. Either the isoparametric angles are out 
+             of the suggested limits or the triangular or tetrahedral quality 
+             measure is bad. The elements have been identified in element set 
+             WarnElemDistorted.
+  
+ --------------------------------------------------------------------------------
+ Distorted isoparametric elements
+  
+  Element   Min/max angle   Adjusted nodes 
+ --------- ---------------- -------------- 
+         1           36.212       NO       
+         5          40.8934       NO       
+  
+  
+  *STEP
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *STEP
+  *STEP
+  *STATIC
+  *BOUNDARY
+  *ENERGY PRINT
+  *NODE FILE
+  *OUTPUT,FIELD
+  *NODE OUTPUT
+  *ENERGY FILE
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *ENERGY OUTPUT,VARIABLE=PRESELECT
+  *ENERGY PRINT
+  *NODE PRINT
+  *EL PRINT
+
+ ***WARNING: OUTPUT VARIABLE SDV HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE CPE4
+  *EL PRINT
+  *EL PRINT,POSITION=NODES
+  *EL PRINT,POSITION=AVERAGED AT NODES
+  *EL PRINT,POSITION=CENTROID
+  *EL FILE
+  *OUTPUT,FIELD
+  *ELEMENT OUTPUT
+  *EL FILE,POSITION=NODES
+  *EL FILE,POSITION=AVERAGED AT NODES
+  *EL FILE,POSITION=CENTROID
+  *END STEP
+  *STEP
+  *STATIC
+  *BOUNDARY
+  *END STEP
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                     5
+          NUMBER OF NODES IS                                        8
+          NUMBER OF NODES DEFINED BY THE USER                       8
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   16
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.10000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.20000    
+       WALLCLOCK TIME (SEC) =          0
+1
+
+   Abaqus 3DEXPERIENCE R2018x                                  Date 05-May-2020   Time 19:39:49
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+     PATCH TEST FOR PLANE STRAIN ELEMENT                                                       STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+     AUTOMATIC TIME CONTROL WITH -
+          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
+          AND A TOTAL TIME PERIOD OF                            1.00    
+          THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-05
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1          1.18E+03               17                 24
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                                INCREMENT     1 SUMMARY
+
+
+ TIME INCREMENT COMPLETED   1.00    ,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED        1.00    ,  TOTAL TIME COMPLETED         1.00    
+
+
+
+                    E N E R G Y   O U T P U T
+
+
+            THE FOLLOWING TABLE IS PRINTED FOR THE WHOLE MODEL AT T =    1.00000    
+
+
+            APPROXIMATE ENERGY TOTALS -
+
+            RECOVERABLE STRAIN ENERGY                   5.184000E-05
+            CONTACT CONSTRAINT ELASTIC ENERGY            0.00000    
+             CONTACT CONSTRAINT ELASTIC NORMAL ENERGY    0.00000    
+             CONTACT CONSTRAINT ELASTIC TANG.  ENERGY    0.00000    
+            KINETIC ENERGY                               0.00000    
+            EXTERNAL WORK                               5.184000E-05
+            CONTACT CONSTRAINT DISCONTINUITY WORK        0.00000    
+            EXTERNAL WORK plus CONTACT DISCONT. WORK    5.184000E-05
+            PLASTIC DISSIPATION                          0.00000    
+            CREEP DISSIPATION                            0.00000    
+            VISCOUS DISSIPATION (IN DAMPERS ETC)         0.00000    
+            STATIC DISSIPATION (STABILIZATION)           0.00000    
+             INCLUDING CONTACT STAB. DISSIPATION         0.00000    
+              CONTACT STABILIZATION NORMAL DISSIPATION   0.00000    
+              CONTACT STABILIZATION TANG.  DISSIPATION   0.00000    
+            ENERGY LOST AT IMPACTS                       0.00000    
+            ENERGY TO CONTROL SPURIOUS MODES             0.00000    
+            ENERGY LOST THROUGH QUIET BOUNDARIES         0.00000    
+            ELECTROSTATIC ENERGY                         0.00000    
+            ENERGY DUE TO ELECTRICAL CURRENT             0.00000    
+            ENERGY LOST TO FRICTIONAL DISSIPATION        0.00000    
+            BUCKLING DISSIPATION (FOR FRAME ELEMT.)      0.00000    
+            DAMAGE DISSIPATION                           0.00000    
+            TOTAL STRAIN ENERGY (STRESS POWER)          5.184000E-05
+            ENERGY BALANCE                              6.776264E-21
+
+
+
+                    E N E R G Y   O U T P U T
+
+
+            THE FOLLOWING TABLE IS PRINTED FOR THE WHOLE MODEL AT T =    1.00000    
+
+
+            APPROXIMATE ENERGY TOTALS -
+
+            RECOVERABLE STRAIN ENERGY                   5.184000E-05
+            CONTACT CONSTRAINT ELASTIC ENERGY            0.00000    
+             CONTACT CONSTRAINT ELASTIC NORMAL ENERGY    0.00000    
+             CONTACT CONSTRAINT ELASTIC TANG.  ENERGY    0.00000    
+            KINETIC ENERGY                               0.00000    
+            EXTERNAL WORK                               5.184000E-05
+            CONTACT CONSTRAINT DISCONTINUITY WORK        0.00000    
+            EXTERNAL WORK plus CONTACT DISCONT. WORK    5.184000E-05
+            PLASTIC DISSIPATION                          0.00000    
+            CREEP DISSIPATION                            0.00000    
+            VISCOUS DISSIPATION (IN DAMPERS ETC)         0.00000    
+            STATIC DISSIPATION (STABILIZATION)           0.00000    
+             INCLUDING CONTACT STAB. DISSIPATION         0.00000    
+              CONTACT STABILIZATION NORMAL DISSIPATION   0.00000    
+              CONTACT STABILIZATION TANG.  DISSIPATION   0.00000    
+            ENERGY LOST AT IMPACTS                       0.00000    
+            ENERGY TO CONTROL SPURIOUS MODES             0.00000    
+            ENERGY LOST THROUGH QUIET BOUNDARIES         0.00000    
+            ELECTROSTATIC ENERGY                         0.00000    
+            ENERGY DUE TO ELECTRICAL CURRENT             0.00000    
+            ENERGY LOST TO FRICTIONAL DISSIPATION        0.00000    
+            BUCKLING DISSIPATION (FOR FRAME ELEMT.)      0.00000    
+            DAMAGE DISSIPATION                           0.00000    
+            TOTAL STRAIN ENERGY (STRESS POWER)          5.184000E-05
+            ENERGY BALANCE                              6.776264E-21
+
+
+
+                                                  E L E M E N T   O U T P U T
+
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE CPE4 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       S11         S22         S33         S12         
+                NOTE 
+
+           1   1          1600.       1600.       800.0       400.0
+           1   2          1600.       1600.       800.0       400.0
+           1   3          1600.       1600.       800.0       400.0
+           1   4          1600.       1600.       800.0       400.0
+           2   1          1600.       1600.       800.0       400.0
+           2   2          1600.       1600.       800.0       400.0
+           2   3          1600.       1600.       800.0       400.0
+           2   4          1600.       1600.       800.0       400.0
+           3   1          1600.       1600.       800.0       400.0
+           3   2          1600.       1600.       800.0       400.0
+           3   3          1600.       1600.       800.0       400.0
+           3   4          1600.       1600.       800.0       400.0
+           4   1          1600.       1600.       800.0       400.0
+           4   2          1600.       1600.       800.0       400.0
+           4   3          1600.       1600.       800.0       400.0
+           4   4          1600.       1600.       800.0       400.0
+           5   1          1600.       1600.       800.0       400.0
+           5   2          1600.       1600.       800.0       400.0
+           5   3          1600.       1600.       800.0       400.0
+           5   4          1600.       1600.       800.0       400.0
+
+ MAXIMUM                 1600.       1600.       800.0       400.0                                                                
+ ELEMENT                     5           5           5           1                                                             
+
+ MINIMUM                 1600.       1600.       800.0       400.0                                                                
+ ELEMENT                     4           3           4           5                                                             
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE CPE4 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       E11         E22         E33         E12         
+                NOTE 
+
+           1   1         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           1   2         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           1   3         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           1   4         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           2   1         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           2   2         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           2   3         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           2   4         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           3   1         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           3   2         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           3   3         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           3   4         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           4   1         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           4   2         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           4   3         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           4   4         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           5   1         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           5   2         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           5   3         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           5   4         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+
+ MAXIMUM                1.0000E-03  1.0000E-03   0.000      1.0000E-03                                                            
+ ELEMENT                     3           5           1           1                                                             
+
+ MINIMUM                1.0000E-03  1.0000E-03   0.000      1.0000E-03                                                            
+ ELEMENT                     4           3           1           5                                                             
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE CPE4 AT THE NODES
+
+    ELEMENT         ND   FOOT-   S11         S22         S33         S12         
+                         NOTE 
+
+           1         10          1600.       1600.       800.0       400.0
+           1         20          1600.       1600.       800.0       400.0
+           1        104          1600.       1600.       800.0       400.0
+           1        102          1600.       1600.       800.0       400.0
+           2         10          1600.       1600.       800.0       400.0
+           2        102          1600.       1600.       800.0       400.0
+           2        202          1600.       1600.       800.0       400.0
+           2         40          1600.       1600.       800.0       400.0
+           3        102          1600.       1600.       800.0       400.0
+           3        104          1600.       1600.       800.0       400.0
+           3        204          1600.       1600.       800.0       400.0
+           3        202          1600.       1600.       800.0       400.0
+           4        104          1600.       1600.       800.0       400.0
+           4         20          1600.       1600.       800.0       400.0
+           4         30          1600.       1600.       800.0       400.0
+           4        204          1600.       1600.       800.0       400.0
+           5        202          1600.       1600.       800.0       400.0
+           5        204          1600.       1600.       800.0       400.0
+           5         30          1600.       1600.       800.0       400.0
+           5         40          1600.       1600.       800.0       400.0
+
+ MAXIMUM                  1600.       1600.       800.0       400.0                                                                
+ ELEMENT                         5           5           5           1                                                             
+
+ MINIMUM                  1600.       1600.       800.0       400.0                                                                
+ ELEMENT                         4           3           4           5                                                             
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE CPE4 AT THE NODES
+
+    ELEMENT         ND   FOOT-   E11         E22         E33         E12         
+                         NOTE 
+
+           1         10         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           1         20         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           1        104         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           1        102         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           2         10         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           2        102         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           2        202         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           2         40         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           3        102         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           3        104         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           3        204         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           3        202         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           4        104         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           4         20         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           4         30         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           4        204         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           5        202         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           5        204         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           5         30         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           5         40         1.0000E-03  1.0000E-03   0.000      1.0000E-03
+
+ MAXIMUM                 1.0000E-03  1.0000E-03   0.000      1.0000E-03                                                            
+ ELEMENT                         3           5           1           1                                                             
+
+ MINIMUM                 1.0000E-03  1.0000E-03   0.000      1.0000E-03                                                            
+ ELEMENT                         4           1           1           5                                                             
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE CPE4 AVERAGED AT THE NODES
+
+       NODE  FOOT-   S11         S22         S33         S12         
+             NOTE 
+
+          10        1600.       1600.       800.0       400.0
+          20        1600.       1600.       800.0       400.0
+          30        1600.       1600.       800.0       400.0
+          40        1600.       1600.       800.0       400.0
+         102        1600.       1600.       800.0       400.0
+         104        1600.       1600.       800.0       400.0
+         202        1600.       1600.       800.0       400.0
+         204        1600.       1600.       800.0       400.0
+
+ MAXIMUM           1600.       1600.       800.0       400.0                                                                
+  NODE               204          40          40          20                                                             
+
+ MINIMUM           1600.       1600.       800.0       400.0                                                                
+  NODE               104         102         102         204                                                             
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE CPE4 AVERAGED AT THE NODES
+
+       NODE  FOOT-   E11         E22         E33         E12         
+             NOTE 
+
+          10       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+          20       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+          30       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+          40       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+         102       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+         104       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+         202       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+         204       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+
+ MAXIMUM          1.0000E-03  1.0000E-03   0.000      1.0000E-03                                                            
+  NODE                20          40          10          20                                                             
+
+ MINIMUM          1.0000E-03  1.0000E-03   0.000      1.0000E-03                                                            
+  NODE                30         104          10         204                                                             
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE CPE4 AT THE CENTROID OF THE ELEMENT
+
+    ELEMENT  FOOT-   S11         S22         S33         S12         
+             NOTE 
+
+           1        1600.       1600.       800.0       400.0
+           2        1600.       1600.       800.0       400.0
+           3        1600.       1600.       800.0       400.0
+           4        1600.       1600.       800.0       400.0
+           5        1600.       1600.       800.0       400.0
+
+ MAXIMUM           1600.       1600.       800.0       400.0                                                                
+ ELEMENT                  3           5           5           1                                                             
+
+ MINIMUM           1600.       1600.       800.0       400.0                                                                
+ ELEMENT                  4           2           2           4                                                             
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE CPE4 AT THE CENTROID OF THE ELEMENT
+
+    ELEMENT  FOOT-   E11         E22         E33         E12         
+             NOTE 
+
+           1       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           2       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           3       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           4       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+           5       1.0000E-03  1.0000E-03   0.000      1.0000E-03
+
+ MAXIMUM          1.0000E-03  1.0000E-03   0.000      1.0000E-03                                                            
+ ELEMENT                  3           5           1           1                                                             
+
+ MINIMUM          1.0000E-03  1.0000E-03   0.000      1.0000E-03                                                            
+ ELEMENT                  4           3           1           4                                                             
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-  U1             U2             RF1            RF2          
+            NOTE
+  
+        10      0.0000000E+00  0.0000000E+00 -1.4400000E-01 -2.1600000E-01 
+        20      2.4000000E-04  1.2000000E-04  4.8000000E-02 -1.6800000E-01 
+        30      3.0000000E-04  2.4000000E-04  1.4400000E-01  2.1600000E-01 
+        40      6.0000000E-05  1.2000000E-04 -4.8000000E-02  1.6800000E-01 
+       102      5.0000000E-05  4.0000000E-05  0.0000000E+00  0.0000000E+00 
+       104      1.9500000E-04  1.2000000E-04  0.0000000E+00  0.0000000E+00 
+       202      1.2000000E-04  1.2000000E-04  0.0000000E+00  0.0000000E+00 
+       204      2.0000000E-04  1.6000000E-04  0.0000000E+00  0.0000000E+00 
+
+ MAXIMUM         3.0000E-04  2.4000E-04  0.1440      0.2160    
+ AT NODE                30          30          30          30
+
+ MINIMUM          0.000       0.000     -0.1440     -0.2160    
+ AT NODE                10          10          10          10
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH      3 WARNING MESSAGES ON THE DAT FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.20000    
+       SYSTEM TIME (SEC)    =   0.0000    
+       TOTAL CPU TIME (SEC) =  0.20000    
+       WALLCLOCK TIME (SEC) =          0

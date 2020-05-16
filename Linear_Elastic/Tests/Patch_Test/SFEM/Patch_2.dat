@@ -1,0 +1,509 @@
+1
+
+   Abaqus 3DEXPERIENCE R2018x                                  Date 07-May-2020   Time 17:54:19
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine DESKTOP-NVH18H4 
+                          you are authorized to run
+                          Abaqus/Standard until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.3ds.com/products/simulia/locations/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *               Abaqus 3DEXPERIENCE R2018x                * 
+                *                                                         * 
+                *          BUILD ID: 2017_11_07-22.51.41 127140           * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release 3DEXPERIENCE R2018x manuals                    * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+1
+
+   Abaqus 3DEXPERIENCE R2018x                                  Date 07-May-2020   Time 17:54:19
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+                                                                                     
+
+                                             A B A Q U S   I N P U T   E C H O
+
+
+                    *HEADING
+                    PATCH TEST FOR PLANE STRAIN ELEMENT     
+                    *PREPRINT,ECHO=YES,HISTORY=NO,MODEL=NO  
+                    *NODE   
+     LINE     5     10,0,0  
+                    20,.24,0.       
+                    30,.24,.12      
+                    40,0.,.12       
+                    50,.12,0.       
+     LINE    10     60,.24,.06      
+                    70,.12,.12      
+                    80,.0,.06       
+                    102,.04,.02     
+                    104,.18,.03     
+     LINE    15     204,.16,.08     
+                    202,.08,.08     
+                    *NGEN   
+                    102,104 
+                    202,204 
+     LINE    20     102,202,50      
+                    104,204,50      
+                    10,102,46       
+                    40,202,81       
+                    30,204,87       
+     LINE    25     20,104,42       
+                    *USER ELEMENT, NODES=4, TYPE=U1, COORDINATES=2, PROPERTIES=3, VARIABLES=8       
+                    1, 2    
+                    *ELEMENT, TYPE=U1, ELSET=EALL   
+                    1,10,20,104,102 
+     LINE    30     2,10,102,202,40 
+                    3,102,104,204,202       
+                    4,104,20,30,204 
+                    5,202,204,30,40 
+                    *ELSET,ELSET=EL3
+     LINE    35     3,      
+                    *UEL PROPERTY, ELSET=EALL       
+                    1.E6, 0.25, 0.001       
+                    *STEP   
+                    *STATIC 
+     LINE    40     1.,1., , 1.     
+                    *BOUNDARY       
+                    10,1,2  
+                    20,1,,.24E-3    
+                    20,2,,.12E-3    
+     LINE    45     30,1,,.3E-3     
+                    30,2,,.24E-3    
+                    40,1,,.06E-3    
+                    40,2,,.12E-3    
+                    *ENERGY PRINT   
+     LINE    50     COORD   
+                    *NODE FILE      
+                     U,RF,CF,COORD  
+                    *OUTPUT,FIELD   
+                    *NODE OUTPUT    
+     LINE    55     U,RF,CF,COORD   
+                    *ENERGY FILE    
+                    *OUTPUT,HISTORY,FREQUENCY=1     
+                    *ENERGY OUTPUT,VARIABLE=PRESELECT       
+                    *ENERGY PRINT   
+     LINE    60     *NODE PRINT     
+                     U, RF  
+                    *EL PRINT       
+                     SDV    
+                    *EL PRINT       
+     LINE    65      S,     
+                     E,     
+                    *EL PRINT,POSITION=NODES
+                     S,     
+                     E,     
+     LINE    70     *EL PRINT,POSITION=AVERAGED AT NODES    
+                     S,     
+                     E,     
+                    *EL PRINT,POSITION=CENTROID     
+                     S,     
+     LINE    75      E,     
+                    *EL FILE
+                     S,     
+                     E,     
+                    *OUTPUT,FIELD   
+     LINE    80     *ELEMENT OUTPUT 
+                    S,      
+                    E,      
+                    *EL FILE,POSITION=NODES 
+                     S,     
+     LINE    85      E,     
+                    *EL FILE,POSITION=AVERAGED AT NODES     
+                     S,     
+                     E,     
+                    *EL FILE,POSITION=CENTROID      
+     LINE    90      S,     
+                     E,     
+                    *END STEP       
+                    --------------------------------------------------------------------------------
+                        5   10   15   20   25   30   35   40   45   50   55   60   65   70   75   80
+                    --------------------------------------------------------------------------------
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *USER ELEMENT, NODES=4, TYPE=U1, COORDINATES=2, PROPERTIES=3, VARIABLES=8
+  *HEADING
+          PATCH TEST FOR PLANE STRAIN ELEMENT                                                                                                                                                                                                                             
+  *NODE
+  *NGEN
+  *ELEMENT, TYPE=U1, ELSET=EALL
+  *ELSET,ELSET=EL3
+  *USER ELEMENT, NODES=4, TYPE=U1, COORDINATES=2, PROPERTIES=3, VARIABLES=8
+  *BOUNDARY
+  *BOUNDARY
+  *UEL PROPERTY, ELSET=EALL
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *ELEMENT OUTPUT
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *ELEMENT OUTPUT
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *ELEMENT OUTPUT
+  *STEP
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *STEP
+  *STEP
+  *STATIC
+  *BOUNDARY
+  *ENERGY PRINT
+  *NODE FILE
+  *OUTPUT,FIELD
+  *NODE OUTPUT
+  *ENERGY FILE
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *ENERGY OUTPUT,VARIABLE=PRESELECT
+  *ENERGY PRINT
+  *NODE PRINT
+  *EL PRINT
+  *EL PRINT
+
+ ***WARNING: OUTPUT VARIABLE S HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE U1
+
+ ***WARNING: OUTPUT VARIABLE E HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE U1
+  *EL PRINT,POSITION=NODES
+
+ ***WARNING: OUTPUT VARIABLE S HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE U1
+
+ ***WARNING: OUTPUT VARIABLE E HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE U1
+  *EL PRINT,POSITION=AVERAGED AT NODES
+
+ ***WARNING: OUTPUT VARIABLE S HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE U1
+
+ ***WARNING: OUTPUT VARIABLE E HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE U1
+  *EL PRINT,POSITION=CENTROID
+
+ ***WARNING: OUTPUT VARIABLE S HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE U1
+
+ ***WARNING: OUTPUT VARIABLE E HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT 
+             TYPE U1
+  *EL FILE
+
+ ***WARNING: OUTPUT REQUEST S IS NOT AVAILABLE FOR ELEMENT TYPE U1
+
+ ***WARNING: OUTPUT REQUEST E IS NOT AVAILABLE FOR ELEMENT TYPE U1
+  *OUTPUT,FIELD
+  *ELEMENT OUTPUT
+  *EL FILE,POSITION=NODES
+
+ ***WARNING: OUTPUT REQUEST S IS NOT AVAILABLE FOR ELEMENT TYPE U1
+
+ ***WARNING: OUTPUT REQUEST E IS NOT AVAILABLE FOR ELEMENT TYPE U1
+  *EL FILE,POSITION=AVERAGED AT NODES
+
+ ***WARNING: OUTPUT REQUEST S IS NOT AVAILABLE FOR ELEMENT TYPE U1
+
+ ***WARNING: OUTPUT REQUEST E IS NOT AVAILABLE FOR ELEMENT TYPE U1
+  *EL FILE,POSITION=CENTROID
+
+ ***WARNING: OUTPUT REQUEST S IS NOT AVAILABLE FOR ELEMENT TYPE U1
+
+ ***WARNING: OUTPUT REQUEST E IS NOT AVAILABLE FOR ELEMENT TYPE U1
+  *END STEP
+
+ ***WARNING: THE *ELEMENT OUTPUT OPTION IS NOT SUPPORTED FOR USER ELEMENTS
+  *STEP
+  *STATIC
+  *BOUNDARY
+  *END STEP
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                     5
+          NUMBER OF NODES IS                                        8
+          NUMBER OF NODES DEFINED BY THE USER                       8
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                   16
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.10000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.20000    
+       WALLCLOCK TIME (SEC) =          0
+1
+
+   Abaqus 3DEXPERIENCE R2018x                                  Date 07-May-2020   Time 17:54:22
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+     PATCH TEST FOR PLANE STRAIN ELEMENT                                                       STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+     AUTOMATIC TIME CONTROL WITH -
+          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
+          AND A TOTAL TIME PERIOD OF                            1.00    
+          THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-05
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1          1.18E+03               17                 24
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                                INCREMENT     1 SUMMARY
+
+
+ TIME INCREMENT COMPLETED   1.00    ,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED        1.00    ,  TOTAL TIME COMPLETED         1.00    
+
+
+
+                    E N E R G Y   O U T P U T
+
+
+            THE FOLLOWING TABLE IS PRINTED FOR THE WHOLE MODEL AT T =    1.00000    
+
+
+            APPROXIMATE ENERGY TOTALS -
+
+            RECOVERABLE STRAIN ENERGY                    0.00000    
+            CONTACT CONSTRAINT ELASTIC ENERGY            0.00000    
+             CONTACT CONSTRAINT ELASTIC NORMAL ENERGY    0.00000    
+             CONTACT CONSTRAINT ELASTIC TANG.  ENERGY    0.00000    
+            KINETIC ENERGY                               0.00000    
+            EXTERNAL WORK                               5.184000E-05
+            CONTACT CONSTRAINT DISCONTINUITY WORK        0.00000    
+            EXTERNAL WORK plus CONTACT DISCONT. WORK    5.184000E-05
+            PLASTIC DISSIPATION                          0.00000    
+            CREEP DISSIPATION                            0.00000    
+            VISCOUS DISSIPATION (IN DAMPERS ETC)         0.00000    
+            STATIC DISSIPATION (STABILIZATION)           0.00000    
+             INCLUDING CONTACT STAB. DISSIPATION         0.00000    
+              CONTACT STABILIZATION NORMAL DISSIPATION   0.00000    
+              CONTACT STABILIZATION TANG.  DISSIPATION   0.00000    
+            ENERGY LOST AT IMPACTS                       0.00000    
+            ENERGY TO CONTROL SPURIOUS MODES             0.00000    
+            ENERGY LOST THROUGH QUIET BOUNDARIES         0.00000    
+            ELECTROSTATIC ENERGY                         0.00000    
+            ENERGY DUE TO ELECTRICAL CURRENT             0.00000    
+            ENERGY LOST TO FRICTIONAL DISSIPATION        0.00000    
+            BUCKLING DISSIPATION (FOR FRAME ELEMT.)      0.00000    
+            DAMAGE DISSIPATION                           0.00000    
+            TOTAL STRAIN ENERGY (STRESS POWER)           0.00000    
+            ENERGY BALANCE                             -5.184000E-05
+
+
+
+                    E N E R G Y   O U T P U T
+
+
+            THE FOLLOWING TABLE IS PRINTED FOR THE WHOLE MODEL AT T =    1.00000    
+
+
+            APPROXIMATE ENERGY TOTALS -
+
+            RECOVERABLE STRAIN ENERGY                    0.00000    
+            CONTACT CONSTRAINT ELASTIC ENERGY            0.00000    
+             CONTACT CONSTRAINT ELASTIC NORMAL ENERGY    0.00000    
+             CONTACT CONSTRAINT ELASTIC TANG.  ENERGY    0.00000    
+            KINETIC ENERGY                               0.00000    
+            EXTERNAL WORK                               5.184000E-05
+            CONTACT CONSTRAINT DISCONTINUITY WORK        0.00000    
+            EXTERNAL WORK plus CONTACT DISCONT. WORK    5.184000E-05
+            PLASTIC DISSIPATION                          0.00000    
+            CREEP DISSIPATION                            0.00000    
+            VISCOUS DISSIPATION (IN DAMPERS ETC)         0.00000    
+            STATIC DISSIPATION (STABILIZATION)           0.00000    
+             INCLUDING CONTACT STAB. DISSIPATION         0.00000    
+              CONTACT STABILIZATION NORMAL DISSIPATION   0.00000    
+              CONTACT STABILIZATION TANG.  DISSIPATION   0.00000    
+            ENERGY LOST AT IMPACTS                       0.00000    
+            ENERGY TO CONTROL SPURIOUS MODES             0.00000    
+            ENERGY LOST THROUGH QUIET BOUNDARIES         0.00000    
+            ELECTROSTATIC ENERGY                         0.00000    
+            ENERGY DUE TO ELECTRICAL CURRENT             0.00000    
+            ENERGY LOST TO FRICTIONAL DISSIPATION        0.00000    
+            BUCKLING DISSIPATION (FOR FRAME ELEMT.)      0.00000    
+            DAMAGE DISSIPATION                           0.00000    
+            TOTAL STRAIN ENERGY (STRESS POWER)           0.00000    
+            ENERGY BALANCE                             -5.184000E-05
+
+
+
+                                                  E L E M E N T   O U T P U T
+
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE U1 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       SDV1        SDV2        SDV3        SDV4        SDV5        SDV6        SDV7        SDV8        
+                NOTE 
+
+           1   1          1600.       1600.       400.0      1.0000E-03  1.0000E-03  1.0000E-03  2.1000E-03  2.7000E-03
+           2   1          1600.       1600.       400.0      1.0000E-03  1.0000E-03  1.0000E-03  3.2000E-03  2.4000E-03
+           3   1          1600.       1600.       400.0      1.0000E-03  1.0000E-03  1.0000E-03  3.1000E-03  2.9000E-03
+           4   1          1600.       1600.       400.0      1.0000E-03  1.0000E-03  1.0000E-03  2.4000E-03  3.6000E-03
+           5   1          1600.       1600.       400.0      1.0000E-03  1.0000E-03  1.0000E-03  3.2000E-03  3.2000E-03
+
+ MAXIMUM                 1600.       1600.       400.0      1.0000E-03  1.0000E-03  1.0000E-03  3.2000E-03  3.6000E-03            
+ ELEMENT                     1           1           3           1           5           3           5           4             
+
+ MINIMUM                 1600.       1600.       400.0      1.0000E-03  1.0000E-03  1.0000E-03  2.1000E-03  2.4000E-03            
+ ELEMENT                     2           4           4           2           4           4           1           2             
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-  U1             U2             RF1            RF2          
+            NOTE
+  
+        10      0.0000000E+00  0.0000000E+00 -1.4400000E-01 -2.1600000E-01 
+        20      2.4000000E-04  1.2000000E-04  4.8000000E-02 -1.6800000E-01 
+        30      3.0000000E-04  2.4000000E-04  1.4400000E-01  2.1600000E-01 
+        40      6.0000000E-05  1.2000000E-04 -4.8000000E-02  1.6800000E-01 
+       102      5.0000000E-05  4.0000000E-05  0.0000000E+00  0.0000000E+00 
+       104      1.9500000E-04  1.2000000E-04  0.0000000E+00  0.0000000E+00 
+       202      1.2000000E-04  1.2000000E-04  0.0000000E+00  0.0000000E+00 
+       204      2.0000000E-04  1.6000000E-04  0.0000000E+00  0.0000000E+00 
+
+ MAXIMUM         3.0000E-04  2.4000E-04  0.1440      0.2160    
+ AT NODE                30          30          30          30
+
+ MINIMUM          0.000       0.000     -0.1440     -0.2160    
+ AT NODE                10          10          10          10
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH     17 WARNING MESSAGES ON THE DAT FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   0.0000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.10000    
+       WALLCLOCK TIME (SEC) =          0
