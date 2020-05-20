@@ -1,0 +1,783 @@
+1
+
+   Abaqus 3DEXPERIENCE R2018x                                  Date 19-May-2020   Time 08:43:37
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes SIMULIA Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine DESKTOP-NVH18H4 
+                          you are authorized to run
+                          Abaqus/Standard until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.3ds.com/products/simulia/locations/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *               Abaqus 3DEXPERIENCE R2018x                * 
+                *                                                         * 
+                *          BUILD ID: 2017_11_07-22.51.41 127140           * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release 3DEXPERIENCE R2018x manuals                    * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+1
+
+   Abaqus 3DEXPERIENCE R2018x                                  Date 19-May-2020   Time 08:43:38
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+                                                                                     
+
+                                             A B A Q U S   I N P U T   E C H O
+
+
+                    *HEADING
+                    Piezoelectric strip under Shear 
+                    *PREPRINT, ECHO=YES, HISTORY=NO, MODEL=NO       
+                    *NODE   
+     LINE     5     1,           0.,          0.5   
+                    2,           0.,           0.   
+                    3,           0.,         -0.5   
+                    4,          0.5,         -0.5   
+                    5,           1.,         -0.5   
+     LINE    10     6,           1.,           0.   
+                    7,           1.,          0.5   
+                    8,          0.5,          0.5   
+                    9,           0.,        0.375   
+                    10,           0.,         0.25  
+     LINE    15     11,           0.,        0.125  
+                    12,           0.,       -0.125  
+                    13,           0.,        -0.25  
+                    14,           0.,       -0.375  
+                    15,        0.125,         -0.5  
+     LINE    20     16,         0.25,         -0.5  
+                    17,        0.375,         -0.5  
+                    18,        0.625,         -0.5  
+                    19,         0.75,         -0.5  
+                    20,        0.875,         -0.5  
+     LINE    25     21,           1.,       -0.375  
+                    22,           1.,        -0.25  
+                    23,           1.,       -0.125  
+                    24,           1.,        0.125  
+                    25,           1.,         0.25  
+     LINE    30     26,           1.,        0.375  
+                    27,        0.875,          0.5  
+                    28,         0.75,          0.5  
+                    29,        0.625,          0.5  
+                    30,        0.375,          0.5  
+     LINE    35     31,         0.25,          0.5  
+                    32,        0.125,          0.5  
+                    33,  0.878388226,  0.129912093  
+                    34,  0.117300101, 0.00587890809 
+                    35,  0.629376411, -0.374065876  
+     LINE    40     36,  0.120757475,   0.25389877  
+                    37,  0.117940933,  0.130837634  
+                    38,   0.11921189,  -0.12084157  
+                    39,  0.123553231, -0.246451467  
+                    40,  0.379202127, -0.364757389  
+     LINE    45     41,  0.504716635, -0.370468885  
+                    42,   0.75214082,  -0.37517491  
+                    43,  0.875627398, -0.375200421  
+                    44,  0.876006126, -0.122851714  
+                    45,  0.876584172, 0.00394378742 
+     LINE    50     46,  0.878755927,  0.254080802  
+                    47,  0.877376914,  0.377204478  
+                    48,  0.628584921,  0.376027346  
+                    49,  0.501138866,  0.370833993  
+                    50,  0.122858092,  0.376710206  
+     LINE    55     51,  0.373006403,  0.373837918  
+                    52,   0.24704136,  0.376551747  
+                    53,  0.636615396, -0.250671118  
+                    54,  0.241358429,  0.255290091  
+                    55,  0.233267158,  0.135113746  
+     LINE    60     56,  0.233025223, -0.112671174  
+                    57,  0.759427488,  0.135677114  
+                    58,  0.227797255, 0.0133523466  
+                    59,  0.385239542, -0.217439085  
+                    60,  0.517322302, -0.245547712  
+     LINE    65     61,  0.755636513, -0.122818016  
+                    62,  0.754560351, 0.0071211555  
+                    63,  0.637736082,   0.25682503  
+                    64,  0.502985835,   0.23353821  
+                    65,   0.24854134, -0.238147184  
+     LINE    70     66,  0.755113721, -0.250548273  
+                    67,  0.758128703,  0.257308602  
+                    68,  0.365316242,  0.251337767  
+                    69,  0.344296515,  0.133304551  
+                    70,  0.400252402, -0.0688272715 
+     LINE    75     71,  0.563237965,   0.14693369  
+                    72,  0.542718232, -0.133364111  
+                    73,  0.630954862, 0.00866835006 
+                    74,  0.327762574,  0.018807454  
+                    75,  0.753835738,  0.378025502  
+     LINE    80     76,   0.25226596, -0.368074059  
+                    77,  0.876335323, -0.250046402  
+                    78,   0.64472729, -0.128680363  
+                    79,  0.332028389, -0.0954498127 
+                    80,  0.650338471,  0.141609758  
+     LINE    85     81,  0.443832368,  0.113242209  
+                    82,  0.529515088, 0.0674245581  
+                    83,  0.552443802, -0.0448739789 
+                    84,  0.456188381, -0.110113725  
+                    85,  0.125724882, -0.372244209  
+     LINE    90     86,  0.413918167, 0.0130851427  
+                    87,  0.489783674, -0.0153178461 
+                    *USER ELEMENT, TYPE=U1, NODES=4, PROPERTIES=9,COORDINATES=2, VARIABLES=10       
+                    1, 2, 9 
+                    *ELEMENT, TYPE=U1, ELSET=EALL   
+     LINE    95     1, 32, 50, 52, 31       
+                    2, 51, 30, 31, 52       
+                    3, 24, 25, 46, 33       
+                    4, 38, 12, 13, 39       
+                    5, 18, 19, 42, 35       
+     LINE   100     6, 42, 43, 77, 66       
+                    7, 36, 10, 11, 37       
+                    8, 69, 68, 54, 55       
+                    9,  2, 34, 37, 11       
+                    10, 12, 38, 34,  2      
+     LINE   105     11, 14, 85, 39, 13      
+                    12,  3, 15, 85, 14      
+                    13, 59, 65, 76, 40      
+                    14, 35, 41,  4, 18      
+                    15, 21, 43, 20,  5      
+     LINE   110     16, 43, 42, 19, 20      
+                    17, 44, 61, 66, 77      
+                    18, 33, 45,  6, 24      
+                    19, 27, 47, 26,  7      
+                    20, 47, 46, 25, 26      
+     LINE   115     21, 48, 63, 67, 75      
+                    22, 51, 49,  8, 30      
+                    23, 10, 36, 50,  9      
+                    24, 51, 52, 54, 68      
+                    25, 32,  1,  9, 50      
+     LINE   120     26, 37, 34, 58, 55      
+                    27, 38, 39, 65, 56      
+                    28, 53, 35, 42, 66      
+                    29, 36, 54, 52, 50      
+                    30, 67, 46, 47, 75      
+     LINE   125     31, 55, 54, 36, 37      
+                    32, 15, 16, 76, 85      
+                    33, 16, 17, 40, 76      
+                    34, 41, 40, 17,  4      
+                    35, 59, 40, 41, 60      
+     LINE   130     36, 35, 53, 60, 41      
+                    37, 21, 22, 77, 43      
+                    38, 22, 23, 44, 77      
+                    39, 45, 44, 23,  6      
+                    40, 61, 44, 45, 62      
+     LINE   135     41, 33, 57, 62, 45      
+                    42, 27, 28, 75, 47      
+                    43, 28, 29, 48, 75      
+                    44, 49, 48, 29,  8      
+                    45, 63, 48, 49, 64      
+     LINE   140     46, 78, 61, 62, 73      
+                    47, 58, 56, 79, 74      
+                    48, 68, 64, 49, 51      
+                    49, 74, 79, 70, 86      
+                    50, 82, 87, 83, 73      
+     LINE   145     51, 34, 38, 56, 58      
+                    52, 65, 59, 79, 56      
+                    53, 57, 33, 46, 67      
+                    54, 67, 63, 80, 57      
+                    55, 84, 59, 60, 72      
+     LINE   150     56, 66, 61, 78, 53      
+                    57, 73, 80, 71, 82      
+                    58, 86, 81, 69, 74      
+                    59, 76, 65, 39, 85      
+                    60, 55, 58, 74, 69      
+     LINE   155     61, 68, 69, 81, 64      
+                    62, 62, 57, 80, 73      
+                    63, 79, 59, 84, 70      
+                    64, 63, 64, 71, 80      
+                    65, 72, 60, 53, 78      
+     LINE   160     66, 84, 87, 86, 70      
+                    67, 83, 72, 78, 73      
+                    68, 71, 64, 81, 82      
+                    69, 83, 87, 84, 72      
+                    70, 87, 82, 81, 86      
+     LINE   165     *UEL PROPERTY, ELSET=EALL       
+                    73382.57, 28182.03, 64014.58, 21052.63, -0.02316, -0.0278, 0.012, 1.53105e-8,   
+                    1.505e-8
+                    *Nset, nset=Set_boundary
+                     2      
+     LINE   170     *Nset, nset=left_nodes  
+                     1, 2, 3, 9, 10, 11, 12, 13,    
+                     14     
+                    *Nset, nset=Top_nodes   
+                     1, 7, 8, 27, 28, 29, 30, 31,   
+     LINE   175      32     
+                    *Nset, nset=Bottom_nodes
+                     3, 4, 5, 15, 16, 17, 18, 19,   
+                     20     
+                    *Nset, nset=Right_nodes 
+     LINE   180      5, 6, 7, 21,22, 23, 24, 25,    
+                     26     
+                    *STEP   
+                    *STATIC 
+                    1.,1.,1e-05,1.  
+     LINE   185     *BOUNDARY       
+                    Set_boundary, 1, 1      
+                    Set_boundary, 2, 2      
+                    Set_boundary, 9, 9, 1000.       
+                    left_nodes, 1, 1
+     LINE   190     left_nodes, 9, 9, 1000. 
+                    Right_nodes, 9, 9, -1000.       
+                    ** Top Nodes -- BOUNDARY
+                    1, 1, 1, 0.0    
+                    1, 2, 2, -4.70000000e-05
+     LINE   195     7, 1, 1, 3.61000000e-05 
+                    7, 2, 2, 1.12100000e-03 
+                    8, 1, 1, 1.80500000e-05 
+                    8, 2, 2, 5.37000000e-04 
+                    27, 1, 1, 3.15875e-05   
+     LINE   200     27, 2, 2, 9.750e-04     
+                    28, 1, 1, 2.70750e-05   
+                    28, 2, 2, 8.290e-04     
+                    29, 1, 1, 2.25625e-05   
+                    29, 2, 2, 6.830e-04     
+     LINE   205     30, 1, 1, 1.35375e-05   
+                    30, 2, 2, 3.910e-04     
+                    31, 1, 1, 9.02500e-06   
+                    31, 2, 2, 2.450e-04     
+                    32, 1, 1, 4.51250e-06   
+     LINE   210     32, 2, 2, 9.900e-05     
+                    ** Bottom Nodes -- BOUNDARY     
+                    3, 1, 1, 0.0    
+                    3, 2, 2, 4.700e-05      
+                    4, 1, 1, 1.80500e-05    
+     LINE   215     4, 2, 2, 6.310e-04      
+                    5, 1, 1, 3.61000e-05    
+                    5, 2, 2, 1.215e-03      
+                    15, 1, 1, 4.51250e-06   
+                    15, 2, 2, 1.930e-04     
+     LINE   220     16, 1, 1, 9.02500e-06   
+                    16, 2, 2, 3.390e-04     
+                    17, 1, 1, 1.35375e-05   
+                    17, 2, 2, 4.850e-04     
+                    18, 1, 1, 2.25625e-05   
+     LINE   225     18, 2, 2, 7.770e-04     
+                    19, 1, 1, 2.70750e-05   
+                    19, 2, 2, 9.230e-04     
+                    20, 1, 1, 3.15875e-05   
+                    20, 2, 2, 1.069e-03     
+     LINE   230     *OUTPUT,FIELD   
+                    *ENERGY FILE    
+                    *OUTPUT,HISTORY,FREQUENCY=1     
+                    *ENERGY OUTPUT,VARIABLE=PRESELECT       
+                    *NODE FILE      
+     LINE   235     U,COORD 
+                    *OUTPUT,FIELD   
+                    *NODE OUTPUT    
+                    U,COORD, EPOT   
+                    *NODE PRINT     
+     LINE   240     U,EPOT  
+                    *EL PRINT       
+                    SDV     
+                    *FILE FORMAT, ZERO INCREMENT    
+                    *EL FILE, FREQUENCY=1   
+     LINE   245     SDV     
+                    *NODE FILE, FREQUENCY=1 
+                    U, EPOT 
+                    *END STEP       
+                    --------------------------------------------------------------------------------
+                        5   10   15   20   25   30   35   40   45   50   55   60   65   70   75   80
+                    --------------------------------------------------------------------------------
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *USER ELEMENT, TYPE=U1, NODES=4, PROPERTIES=9,COORDINATES=2, VARIABLES=10
+  *HEADING
+          Piezoelectric strip under Shear                                                                                                                                                                                                                                 
+  *NODE
+  *ELEMENT, TYPE=U1, ELSET=EALL
+  *Nset, nset=Set_boundary
+  *Nset, nset=left_nodes
+  *Nset, nset=Top_nodes
+  *Nset, nset=Bottom_nodes
+  *Nset, nset=Right_nodes
+  *FILE FORMAT, ZERO INCREMENT
+
+ ***NOTE: THE ZERO INCREMENT WILL BE WRITTEN TO THE RESULTS FILE FOR ALL VALID 
+          PROCEDURES
+
+ ***WARNING: BUILT-IN PIEZOELECTRIC ELEMENTS CANNOT BE USED WITH BUILT-IN 
+             COUPLED THERMAL-ELECRICAL ELEMENTS OR BUILT-IN COUPLED 
+             THERMAL-ELECRICAL-STRUCTURAL ELEMENTS
+  *USER ELEMENT, TYPE=U1, NODES=4, PROPERTIES=9,COORDINATES=2, VARIABLES=10
+  *BOUNDARY
+  *BOUNDARY
+  *UEL PROPERTY, ELSET=EALL
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *STEP
+  *OUTPUT,FIELD
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *OUTPUT,FIELD
+  *STEP
+  *STEP
+  *STATIC
+  *BOUNDARY
+  *OUTPUT,FIELD
+  *ENERGY FILE
+  *OUTPUT,HISTORY,FREQUENCY=1
+  *ENERGY OUTPUT,VARIABLE=PRESELECT
+  *NODE FILE
+  *OUTPUT,FIELD
+  *NODE OUTPUT
+  *NODE PRINT
+  *EL PRINT
+  *EL FILE, FREQUENCY=1
+  *NODE FILE, FREQUENCY=1
+  *END STEP
+  *STEP
+  *STATIC
+  *BOUNDARY
+  *END STEP
+
+ ***WARNING: MULTIPLE ELECTRICAL POTENTIAL BOUNDARY CONDITIONS HAVE BEEN 
+             SPECIFIED ON NODE 2. THE FIRST BOUNDARY CONDITION WILL BE USED AND 
+             THE OTHER BOUNDARY CONDITIONS WILL BE IGNORED.
+ LINE IMAGE: *END STEP
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                    70
+          NUMBER OF NODES IS                                       87
+          NUMBER OF NODES DEFINED BY THE USER                      87
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                  261
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   0.0000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.10000    
+       WALLCLOCK TIME (SEC) =          1
+1
+
+   Abaqus 3DEXPERIENCE R2018x                                  Date 19-May-2020   Time 08:43:46
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+     Piezoelectric strip under Shear                                                           STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     S T A T I C   A N A L Y S I S
+
+
+                                                                                          
+
+     AUTOMATIC TIME CONTROL WITH -
+          A SUGGESTED INITIAL TIME INCREMENT OF                 1.00    
+          AND A TOTAL TIME PERIOD OF                            1.00    
+          THE MINIMUM TIME INCREMENT ALLOWED IS                1.000E-05
+          THE MAXIMUM TIME INCREMENT ALLOWED IS                 1.00    
+
+     LINEAR EQUATION SOLVER TYPE         DIRECT SPARSE
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1          2.73E+05               17                 24
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                                INCREMENT     1 SUMMARY
+
+
+ TIME INCREMENT COMPLETED   1.00    ,  FRACTION OF STEP COMPLETED   1.00    
+ STEP TIME COMPLETED        1.00    ,  TOTAL TIME COMPLETED         1.00    
+
+
+
+                                                  E L E M E N T   O U T P U T
+
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE U1 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       SDV1        SDV2        SDV3        SDV4        SDV5        SDV6        SDV7        SDV8        SDV9        
+                NOTE 
+
+           1   1         -1.621      -6.593       1.210      3.6303E-05 -8.1896E-05  1.1581E-03   1931.      -85.37      4.3460E-05
+           2   1         -1.357      -6.229      0.8852      3.6348E-05 -8.0240E-05  1.1593E-03   1960.      -76.13      4.3921E-05
+           3   1        -2.7715E-02  -4.636     -1.1842E-02  3.4713E-05 -8.3605E-05  1.1620E-03   2040.      -9.450      4.5173E-05
+           4   1        -0.5006      -5.316      0.1863      3.2572E-05 -9.1549E-05  1.1712E-03   2039.      -13.42      4.5274E-05
+           5   1         -1.391      -6.370       1.218      3.7217E-05 -8.1862E-05  1.1758E-03   1961.      -78.37      4.4137E-05
+           6   1        -0.9787      -7.118       1.567      4.5721E-05 -1.0614E-04  1.1764E-03   1933.      -57.97      4.3717E-05
+           7   1        -0.5544      -5.208      0.2539      3.0202E-05 -9.0563E-05  1.1365E-03   1973.      -9.431      4.3840E-05
+           8   1        -0.9218      -7.034      0.9508      4.6121E-05 -1.0483E-04  1.1675E-03   1969.      -58.37      4.4158E-05
+           9   1        -0.3197      -4.537      0.5916      2.8687E-05 -8.0663E-05  1.1621E-03   1989.      -6.543      4.4403E-05
+          10   1        -0.7317      -5.824      0.5849      3.2447E-05 -9.9456E-05  1.1741E-03   2011.      -13.38      4.4878E-05
+          11   1        -0.4599      -5.178      3.7001E-02  3.2894E-05 -8.7973E-05  1.1817E-03   2070.      -17.03      4.5874E-05
+          12   1        -0.7164      -5.622     -0.6596      3.5498E-05 -8.7314E-05  1.1796E-03   2125.      -37.16      4.6683E-05
+          13   1         -1.149      -6.453      0.2561      3.9562E-05 -8.9560E-05  1.1680E-03   2028.      -65.99      4.5063E-05
+          14   1         -1.349      -6.315      0.8741      3.7803E-05 -8.0530E-05  1.1736E-03   1986.      -80.03      4.4493E-05
+          15   1         -1.345      -7.861       1.689      4.3819E-05 -1.1999E-04  1.1509E-03   1878.      -50.89      4.2571E-05
+          16   1         -1.606      -6.676       1.663      3.7603E-05 -8.2674E-05  1.1796E-03   1931.      -87.90      4.3719E-05
+          17   1        -0.2336      -6.391      0.7427      4.8813E-05 -1.0555E-04  1.1564E-03   1967.      -36.31      4.3990E-05
+          18   1        -3.9042E-02  -4.702      6.3185E-02  3.4906E-05 -8.4947E-05  1.1549E-03   2021.      -8.918      4.4798E-05
+          19   1        -0.6890      -5.684     -0.9168      3.6757E-05 -8.7958E-05  1.1649E-03   2120.      -39.18      4.6437E-05
+          20   1        -0.1002      -4.827     -0.1660      3.5953E-05 -8.4589E-05  1.1691E-03   2065.      -15.31      4.5645E-05
+          21   1        -0.9014      -6.099     -0.2426      4.0403E-05 -8.6015E-05  1.1489E-03   2036.      -62.27      4.4956E-05
+          22   1         -1.233      -6.185      0.4895      3.8254E-05 -7.9964E-05  1.1566E-03   1988.      -77.13      4.4323E-05
+          23   1        -0.5034      -5.981      0.3650      3.8729E-05 -1.0125E-04  1.1239E-03   1941.      -21.24      4.3209E-05
+          24   1         -1.213      -6.635       1.064      4.0402E-05 -9.1368E-05  1.1682E-03   1961.      -69.22      4.4040E-05
+          25   1         -1.331      -7.388       1.443      4.0120E-05 -1.1223E-04  1.1352E-03   1871.      -48.01      4.2274E-05
+          26   1        -0.4813      -6.220      0.4507      4.1923E-05 -1.0371E-04  1.1564E-03   1991.      -27.42      4.4361E-05
+          27   1        -0.8040      -6.185      0.3838      3.8303E-05 -9.6904E-05  1.1752E-03   2030.      -38.16      4.5180E-05
+          28   1         -1.230      -6.709       1.271      4.1272E-05 -9.1441E-05  1.1792E-03   1963.      -72.62      4.4202E-05
+          29   1         -1.168      -6.833       1.259      4.0207E-05 -1.0012E-04  1.1611E-03   1932.      -56.01      4.3514E-05
+          30   1        -0.6241      -5.909     -0.6238      4.0623E-05 -9.0324E-05  1.1487E-03   2067.      -45.75      4.5434E-05
+          31   1        -0.4525      -6.299      0.8112      4.4009E-05 -1.0336E-04  1.1559E-03   1960.      -33.21      4.3885E-05
+          32   1         -1.109      -5.824     -0.2895      3.6412E-05 -7.6610E-05  1.1657E-03   2069.      -70.02      4.5669E-05
+          33   1         -1.183      -6.021      0.1438      3.7106E-05 -7.8796E-05  1.1675E-03   2036.      -72.76      4.5185E-05
+          34   1         -1.291      -6.222      0.5166      3.7734E-05 -7.9904E-05  1.1705E-03   2010.      -78.06      4.4826E-05
+          35   1         -1.157      -6.601      0.5716      4.1274E-05 -9.0745E-05  1.1708E-03   2006.      -70.32      4.4770E-05
+          36   1         -1.190      -6.685      0.9488      4.1648E-05 -9.1498E-05  1.1759E-03   1984.      -71.99      4.4484E-05
+          37   1        -5.7616E-02  -6.009      0.4240      4.6163E-05 -1.0517E-04  1.1319E-03   1950.      -20.78      4.3444E-05
+          38   1        -4.8645E-02  -5.327      0.2381      3.9515E-05 -9.6105E-05  1.1410E-03   1982.      -10.36      4.4035E-05
+          39   1        -3.2589E-02  -4.923      0.1609      3.6730E-05 -8.8896E-05  1.1488E-03   2002.      -9.614      4.4437E-05
+          40   1        -0.2092      -6.016      0.4137      4.5189E-05 -1.0131E-04  1.1562E-03   1994.      -28.94      4.4402E-05
+          41   1        -0.1753      -5.757      0.2131      4.3646E-05 -9.7139E-05  1.1584E-03   2015.      -27.66      4.4745E-05
+          42   1         -1.006      -5.576     -0.7640      3.6383E-05 -7.2506E-05  1.1450E-03   2072.      -70.50      4.5470E-05
+          43   1        -0.9936      -5.731     -0.3401      3.7291E-05 -7.6335E-05  1.1479E-03   2042.      -68.17      4.5043E-05
+          44   1         -1.144      -6.045      6.4964E-02  3.8349E-05 -7.8645E-05  1.1515E-03   2015.      -75.21      4.4666E-05
+          45   1        -0.9903      -6.453      0.1656      4.2439E-05 -9.0164E-05  1.1544E-03   2012.      -67.51      4.4651E-05
+          46   1        -0.4609      -6.814      0.6513      5.0371E-05 -1.0745E-04  1.1644E-03   1989.      -48.76      4.4418E-05
+          47   1        -0.6842      -6.677      0.4635      4.4877E-05 -1.0492E-04  1.1644E-03   2004.      -44.07      4.4657E-05
+          48   1         -1.111      -6.646      0.5789      4.2291E-05 -9.2082E-05  1.1604E-03   1988.      -69.92      4.4356E-05
+          49   1        -0.8325      -7.096      0.5182      4.7939E-05 -1.0682E-04  1.1651E-03   2001.      -57.86      4.4616E-05
+          50   1        -0.7634      -7.201      0.6535      5.0804E-05 -1.0739E-04  1.1674E-03   1994.      -63.26      4.4531E-05
+          51   1        -0.6546      -5.920      0.3414      3.7543E-05 -9.5569E-05  1.1633E-03   2012.      -30.93      4.4771E-05
+          52   1        -0.9150      -6.625      0.2971      4.2494E-05 -9.8758E-05  1.1663E-03   2021.      -53.98      4.4943E-05
+          53   1        -0.2441      -5.753     -8.9500E-02  4.3310E-05 -9.4946E-05  1.1578E-03   2039.      -32.23      4.5108E-05
+          54   1        -0.6557      -6.461     -9.2218E-02  4.5417E-05 -9.7830E-05  1.1517E-03   2028.      -53.17      4.4872E-05
+          55   1         -1.029      -6.964      0.6618      4.5258E-05 -9.9983E-05  1.1707E-03   1999.      -66.15      4.4649E-05
+          56   1        -0.8275      -7.001       1.150      4.7665E-05 -1.0442E-04  1.1766E-03   1968.      -59.69      4.4257E-05
+          57   1        -0.7416      -7.061      0.3681      4.9543E-05 -1.0612E-04  1.1595E-03   2004.      -59.87      4.4591E-05
+          58   1        -0.8513      -7.183      0.7370      4.8684E-05 -1.0748E-04  1.1679E-03   1988.      -60.23      4.4446E-05
+          59   1        -0.8952      -6.215     -9.3042E-02  3.9020E-05 -9.2866E-05  1.1680E-03   2057.      -49.28      4.5509E-05
+          60   1        -0.6630      -6.804      0.6270      4.6847E-05 -1.0606E-04  1.1620E-03   1986.      -48.01      4.4357E-05
+          61   1        -0.9912      -6.988      0.7511      4.6136E-05 -1.0053E-04  1.1670E-03   1985.      -66.65      4.4391E-05
+          62   1        -0.4372      -6.637      0.3038      4.9141E-05 -1.0498E-04  1.1597E-03   2009.      -46.84      4.4680E-05
+          63   1        -0.9370      -6.960      0.4972      4.6021E-05 -1.0198E-04  1.1665E-03   2005.      -62.18      4.4696E-05
+          64   1        -0.8405      -6.727      0.2290      4.5846E-05 -9.8465E-05  1.1559E-03   2009.      -61.74      4.4625E-05
+          65   1         -1.017      -6.985      0.9532      4.5974E-05 -9.9741E-05  1.1763E-03   1984.      -68.20      4.4495E-05
+          66   1        -0.9219      -7.220      0.6716      4.8634E-05 -1.0603E-04  1.1685E-03   1994.      -64.89      4.4552E-05
+          67   1        -0.8182      -7.145      0.7998      4.9314E-05 -1.0629E-04  1.1715E-03   1989.      -62.24      4.4504E-05
+          68   1        -0.9301      -7.043      0.5277      4.7539E-05 -1.0199E-04  1.1631E-03   1997.      -66.68      4.4527E-05
+          69   1        -0.9556      -7.237      0.7682      4.8591E-05 -1.0532E-04  1.1715E-03   1991.      -67.07      4.4544E-05
+          70   1        -0.9393      -7.278      0.6511      4.9100E-05 -1.0633E-04  1.1669E-03   1993.      -66.75      4.4514E-05
+
+ MAXIMUM               -2.7715E-02  -4.537       1.689      5.0804E-05 -7.2506E-05  1.1817E-03   2125.      -6.543      4.6683E-05
+ ELEMENT                     3           9          15          50          42          11          12           9          12 
+
+ MINIMUM                -1.621      -7.861     -0.9168      2.8687E-05 -1.1999E-04  1.1239E-03   1871.      -87.90      4.2274E-05
+ ELEMENT                     1          15          19           9          15          23          25          16          25 
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE U1 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       SDV10       
+                NOTE 
+
+           1   1         1.5119E-07
+           2   1         2.4304E-07
+           3   1         1.3781E-06
+           4   1         1.5888E-06
+           5   1         2.3432E-07
+           6   1         1.0193E-06
+           7   1         1.6762E-06
+           8   1         9.6782E-07
+           9   1         1.4796E-06
+          10   1         1.8120E-06
+          11   1         1.4275E-06
+          12   1         1.0459E-06
+          13   1         5.8029E-07
+          14   1         1.5869E-07
+          15   1         1.5551E-06
+          16   1         1.0454E-07
+          17   1         1.2574E-06
+          18   1         1.4189E-06
+          19   1         1.0042E-06
+          20   1         1.2884E-06
+          21   1         5.1832E-07
+          22   1         1.7618E-07
+          23   1         1.5980E-06
+          24   1         5.6256E-07
+          25   1         1.4682E-06
+          26   1         1.4995E-06
+          27   1         1.2325E-06
+          28   1         4.9328E-07
+          29   1         1.0091E-06
+          30   1         8.8159E-07
+          31   1         1.3544E-06
+          32   1         2.3267E-07
+          33   1         2.3617E-07
+          34   1         1.7261E-07
+          35   1         5.0845E-07
+          36   1         4.9560E-07
+          37   1         1.5420E-06
+          38   1         1.6006E-06
+          39   1         1.4759E-06
+          40   1         1.3344E-06
+          41   1         1.2734E-06
+          42   1         1.1195E-07
+          43   1         2.3251E-07
+          44   1         1.6620E-07
+          45   1         5.0756E-07
+          46   1         1.0866E-06
+          47   1         1.2141E-06
+          48   1         5.2811E-07
+          49   1         9.8866E-07
+          50   1         8.5670E-07
+          51   1         1.3218E-06
+          52   1         9.4899E-07
+          53   1         1.1513E-06
+          54   1         8.6758E-07
+          55   1         7.3577E-07
+          56   1         9.0078E-07
+          57   1         9.0170E-07
+          58   1         9.5392E-07
+          59   1         9.3625E-07
+          60   1         1.1409E-06
+          61   1         7.2313E-07
+          62   1         1.0754E-06
+          63   1         8.3340E-07
+          64   1         7.4636E-07
+          65   1         6.8169E-07
+          66   1         8.4460E-07
+          67   1         8.7588E-07
+          68   1         7.3082E-07
+          69   1         7.9300E-07
+          70   1         8.1420E-07
+
+ MAXIMUM                1.8120E-06                                                                                                
+ ELEMENT                    10                                                                                                 
+
+ MINIMUM                1.0454E-07                                                                                                
+ ELEMENT                    16                                                                                                 
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-  U1             U2             EPOT         
+            NOTE
+  
+         1      0.0000000E+00 -4.7000000E-05  1.0000000E+03 
+         2      0.0000000E+00  0.0000000E+00  1.0000000E+03 
+         3      0.0000000E+00  4.7000000E-05  1.0000000E+03 
+         4      1.8050000E-05  6.3100000E-04 -3.5087172E+01 
+         5      3.6100000E-05  1.2150000E-03 -1.0000000E+03 
+         6      4.3513050E-05  1.1626279E-03 -1.0000000E+03 
+         7      3.6100000E-05  1.1210000E-03 -1.0000000E+03 
+         8      1.8050000E-05  5.3700000E-04  3.5711751E+01 
+         9      0.0000000E+00 -2.9368565E-05  1.0000000E+03 
+        10      0.0000000E+00 -1.7798490E-05  1.0000000E+03 
+        11      0.0000000E+00 -7.2233783E-06  1.0000000E+03 
+        12      0.0000000E+00  1.3912948E-05  1.0000000E+03 
+        13      0.0000000E+00  2.4653454E-05  1.0000000E+03 
+        14      0.0000000E+00  3.4559688E-05  1.0000000E+03 
+        15      4.5125000E-06  1.9300000E-04  7.2977829E+02 
+        16      9.0250000E-06  3.3900000E-04  4.7156395E+02 
+        17      1.3537500E-05  4.8500000E-04  2.1616304E+02 
+        18      2.2562500E-05  7.7700000E-04 -2.8377921E+02 
+        19      2.7075000E-05  9.2300000E-04 -5.2841910E+02 
+        20      3.1587500E-05  1.0690000E-03 -7.7155771E+02 
+        21      3.9642996E-05  1.1952897E-03 -1.0000000E+03 
+        22      4.1966719E-05  1.1840669E-03 -1.0000000E+03 
+        23      4.3124081E-05  1.1729262E-03 -1.0000000E+03 
+        24      4.3000466E-05  1.1529883E-03 -1.0000000E+03 
+        25      4.1588184E-05  1.1433341E-03 -1.0000000E+03 
+        26      3.8850547E-05  1.1342653E-03 -1.0000000E+03 
+        27      3.1587500E-05  9.7500000E-04 -7.3008872E+02 
+        28      2.7075000E-05  8.2900000E-04 -4.7219562E+02 
+        29      2.2562500E-05  6.8300000E-04 -2.1614806E+02 
+        30      1.3537500E-05  3.9100000E-04  2.8446902E+02 
+        31      9.0250000E-06  2.4500000E-04  5.2920267E+02 
+        32      4.5125000E-06  9.9000000E-05  7.7206940E+02 
+        33      3.8745640E-05  1.0106599E-03 -7.5308891E+02 
+        34      3.5327413E-06  1.3886019E-04  7.6586373E+02 
+        35      2.3694363E-05  7.7192499E-04 -2.8197394E+02 
+        36      4.0398997E-06  1.1797246E-04  7.6300290E+02 
+        37      3.1991077E-06  1.2666722E-04  7.6622424E+02 
+        38      4.1205456E-06  1.5222563E-04  7.5864457E+02 
+        39      3.8008850E-06  1.6950577E-04  7.4642671E+02 
+        40      1.3865878E-05  4.7913799E-04  2.1832411E+02 
+        41      1.8790490E-05  6.2612031E-04 -3.4509890E+01 
+        42      2.8393214E-05  9.1515312E-04 -5.2335286E+02 
+        43      3.3224140E-05  1.0594434E-03 -7.6002694E+02 
+        44      3.8398081E-05  1.0316725E-03 -7.5294496E+02 
+        45      3.9179311E-05  1.0202487E-03 -7.5168140E+02 
+        46      3.7309557E-05  9.9991383E-04 -7.5148427E+02 
+        47      3.4214486E-05  9.8634966E-04 -7.4483696E+02 
+        48      2.4885872E-05  6.9679612E-04 -2.3268587E+02 
+        49      1.9797103E-05  5.4862557E-04  2.3692540E+01 
+        50      5.4247385E-06  1.0680661E-04  7.6417766E+02 
+        51      1.4593007E-05  3.9879318E-04  2.7849467E+02 
+        52      9.9596561E-06  2.5145135E-04  5.2588025E+02 
+        53      2.5318166E-05  7.6911360E-04 -2.8755249E+02 
+        54      9.3554178E-06  2.5574184E-04  5.2842732E+02 
+        55      8.2994376E-06  2.5964269E-04  5.3851170E+02 
+        56      8.1438282E-06  2.8507668E-04  5.2930836E+02 
+        57      3.3706248E-05  8.7141367E-04 -5.1201518E+02 
+        58      7.8938105E-06  2.6596596E-04  5.4427417E+02 
+        59      1.4591184E-05  4.7291834E-04  2.1597520E+02 
+        60      2.0140095E-05  6.2937439E-04 -5.0423530E+01 
+        61      3.2966561E-05  8.9396952E-04 -5.1419547E+02 
+        62      3.3676251E-05  8.7880589E-04 -5.0702918E+02 
+        63      2.6749427E-05  7.1797786E-04 -2.5877064E+02 
+        64      2.0994652E-05  5.6337855E-04  1.0336935E+01 
+        65      8.9504904E-06  3.1544305E-04  4.9163698E+02 
+        66      3.0560260E-05  9.0718812E-04 -5.1980782E+02 
+        67      3.1853583E-05  8.5773475E-04 -5.0380724E+02 
+        68      1.4823920E-05  4.0114327E-04  2.8529723E+02 
+        69      1.3640576E-05  3.8833657E-04  3.1863080E+02 
+        70      1.5758723E-05  4.7523456E-04  1.9513542E+02 
+        71      2.4017909E-05  6.4222122E-04 -1.1591096E+02 
+        72      2.2207139E-05  6.4792138E-04 -9.3237043E+01 
+        73      2.7611370E-05  7.3554066E-04 -2.5984541E+02 
+        74      1.2449785E-05  3.8155385E-04  3.4523456E+02 
+        75      2.9667677E-05  8.4263737E-04 -4.8758211E+02 
+        76      9.0289793E-06  3.3135848E-04  4.7567646E+02 
+        77      3.6928526E-05  1.0451410E-03 -7.5621031E+02 
+        78      2.7188276E-05  7.6628172E-04 -2.9525646E+02 
+        79      1.2526422E-05  3.9870307E-04  3.3058452E+02 
+        80      2.8323754E-05  7.4364686E-04 -2.9133748E+02 
+        81      1.8386191E-05  5.0661588E-04  1.2024036E+02 
+        82      2.2464732E-05  6.1120247E-04 -5.3717972E+01 
+        83      2.3262761E-05  6.4994803E-04 -1.0654334E+02 
+        84      1.8192865E-05  5.4463858E-04  8.0748318E+01 
+        85      4.3859784E-06  1.8423501E-04  7.3765614E+02 
+        86      1.6664499E-05  4.8236247E-04  1.7302659E+02 
+        87      2.0346445E-05  5.7379677E-04  2.0081892E+01 
+
+ MAXIMUM         4.3513E-05  1.2150E-03   1000.    
+ AT NODE                 6           5           1
+
+ MINIMUM          0.000     -4.7000E-05  -1000.    
+ AT NODE                 1           1           5
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH      2 WARNING MESSAGES ON THE DAT FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.10000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.20000    
+       WALLCLOCK TIME (SEC) =          0
